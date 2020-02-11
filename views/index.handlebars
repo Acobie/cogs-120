@@ -1,8 +1,150 @@
+<!doctype html>
+
 <html>
+
 <head>
-	<title>Test Page</title>
+	<title>Gamer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom-theme.css">   
 </head>
+
 <body>
-Begin here (or replace this with any static code already written).
+     
+    
+    <!--
+    <div class="navbar-collapse collapse" id="headerText">
+		<span class="navbar-brand">
+		</span>
+	</div>
+    -->
+
+	
+    <nav class="navbar navbar-static-top" style="background-color:#16141A">
+        <button class="btn btn-default">Back</button>
+    </nav>
+     
+    <div class="container">
+    
+       
+        <h4 class="text-center text-light top-buffer">Select Your Favorite</h4>
+        <h3 class="text-center text-light">GAMING GENRES:</h3>
+        
+        <div class="row top-buffer">
+            
+            <div class="col">
+                <div class="button" id="Action" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="Action">Action</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="button" id="Adventure" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="Adventure">Adventure</p>
+                </div>
+            </div>
+        
+        </div>
+        
+        <div class="row top-buffer">
+            
+            <div class="col">
+                <div class="button" id="Casual" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="Casual">Casual</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="button" id="Puzzle" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="Puzzle">Puzzle</p>
+                </div>
+            </div>
+        
+        </div>
+       
+        <div class="row top-buffer">
+            
+            <div class="col">
+                <div class="button" id="Racing" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="Racing">Racing</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="button" id="RPG" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="RPG">RPG</p>
+                </div>
+            </div>
+        
+        </div>
+    
+        <div class="row top-buffer">
+            
+            <div class="col">
+                <div class="button" id="Sports" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="Sports">Sports</p>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="button" id="Strategy" onclick="toggleButton(event)">
+                    <p class="buttonItem" id="Strategy">Strategy</p>
+                </div>
+            </div>
+        
+        </div>
+    
+    </div>
+    
+    <nav class="navbar fixed-bottom" id="nextMenu"
+    style="background-color:#16141A">
+        <a class="btn btn-default mr-auto" href="./suggestions">Next</a>
+    </nav>
+    
+    
+    <script>
+    var genres = ["0"];
+    var genSize = 0;
+    function toggleButton(e) {
+        if(genres.includes(e.srcElement.id)){
+            var ind = genres.indexOf(e.srcElement.id);
+            genres[ind] = "0";
+
+            document.getElementById(e.srcElement.id).style.backgroundColor = "#FFFFFF";
+            document.getElementById(e.srcElement.id).style.boxShadow = 
+            "7px 7px 8px rgba(0, 0, 0, 0.25)";
+            //document.getElementById("next-menu").style.visibility = "hidden";       
+            genSize--;
+            if(genSize == 0){
+                $('#nextMenu').fadeOut(500);
+            }
+        }
+        else {
+            if(genres.includes("0")){
+                var ind = genres.indexOf("0");
+                genres[ind] = e.srcElement.id;
+            }
+            else{
+                genres.push(e.srcElement.id);
+            }
+            document.getElementById(e.srcElement.id).style.backgroundColor = "#FF007A";
+            document.getElementById(e.srcElement.id).style.boxShadow =
+            "7px 7px 8px rgba(0, 0, 0, 0.25) inset";
+            genSize++;
+            $('#nextMenu').fadeIn(500);
+        }
+
+    }
+    </script>
+    
+    <script src="js/jquery-1.11.0.js"></script>	
+    <!--<script src="js/bootstrap.min.js"></script>-->
+	<script src="js/bootstrap.js"></script>
+    
+
 </body>
+
 </html>

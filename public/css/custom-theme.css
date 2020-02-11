@@ -1,0 +1,34 @@
+body { background: #221F27 !important;}
+
+.top-buffer { margin-top:20px; }
+
+#nextMenu {
+    
+}
+
+.button {
+    position: relative;
+    width: 124px;
+    height: 124px; 
+    margin-left: auto;
+    margin-right: auto;
+    background: #FFFFFF;
+    box-shadow: 7px 7px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.buttonItem {
+    position: relative;
+    width: 75px;
+    height: 31px;
+    left: 25px; 
+    top: 45px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: 0.05em;
+
+    color: #000000;
+}
