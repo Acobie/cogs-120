@@ -40,14 +40,14 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', index.view);
+app.get('/home', index.view);
 // Example route
 // app.get('/users', user.list);
 app.get('/suggestions', suggestions.view);
 app.get('/friends', friends.view);
 app.get('/chats', chats.view);
 app.get('/chatrooms', chatrooms.view);
-app.get('/login', login.view);
+app.get('/', login.view);
 app.get('/games', games.view);
 
 http.createServer(app).listen(app.get('port'), function(){
