@@ -12,6 +12,11 @@ var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
 var suggestions = require('./routes/suggestions');
+var friends = require('./routes/friends');
+var chats = require('./routes/chats');
+var chatrooms = require('./routes/chatrooms');
+var login = require('./routes/login');
+var games = require('./routes/games');
 
 var app = express();
 
@@ -39,6 +44,11 @@ app.get('/', index.view);
 // Example route
 // app.get('/users', user.list);
 app.get('/suggestions', suggestions.view);
+app.get('/friends', friends.view);
+app.get('/chats', chats.view);
+app.get('/chatrooms', chatrooms.view);
+app.get('/login', login.view);
+app.get('/games', games.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

@@ -1,0 +1,55 @@
+{
+    "suggestions": [
+        {
+            "name": "A. Dude",
+            "genres": [ "Action", "Adventure", "Puzzle" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "B. Nice",
+            "genres": [ "Casual", "Racing", "RPG", "Sports" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "C. Yu",
+            "genres": [ "Casual", "Sports", "Strategy" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "D. Oh",
+            "genres": [ "Adventure", "Strategy" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "E. Low",
+            "genres": [ "Action", "Racing", "RPG" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "F. Respect",
+            "genres": [ "Action", "Puzzle", "Sports", "Strategy" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "G. Man",
+            "genres": [ "Adventure", "Casual", "Puzzle", "Racing" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "H. World",
+            "genres": [ "RPG", "Sports" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "I. Cam",
+            "genres": [ "Action", "Puzzle", "RPG", "Strategy" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        },
+        {
+            "name": "J. Rock",
+            "genres": [ "Adventure" ],
+            "imageURL": "https://i.imgur.com/eClV1JZ.png"
+        }
+
+    ]
+}

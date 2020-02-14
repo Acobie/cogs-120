@@ -5,5 +5,5 @@
 var data = require("../suggestions.json");
 
 exports.view = function(req, res){
-    res.render('suggestions', data);
+    res.render('friends', data);
 };

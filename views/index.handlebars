@@ -24,7 +24,7 @@
 
 	
     <nav class="navbar navbar-static-top" style="background-color:#16141A">
-        <button class="btn btn-default">Back</button>
+        <a class="mr-auto" style="color:#FF007A" href="./login">BACK</a>
     </nav>
      
     <div class="container">
@@ -101,7 +101,7 @@
     
     <nav class="navbar fixed-bottom" id="nextMenu"
     style="background-color:#16141A">
-        <a class="btn btn-default mr-auto" href="./suggestions">Next</a>
+        <a class="ml-auto" style="color:#FF007A" href="./suggestions">NEXT</a>
     </nav>
     
     
@@ -138,12 +138,29 @@
         }
 
     }
+
+    $.cookie('usrGenres', genres, {expires: 1}); // expires in 1 day
+    //var id = $.cookie('usrGenres');
+
     </script>
-    
+   
+    <script>
+        
+    </script>
+
     <script src="js/jquery-1.11.0.js"></script>	
     <!--<script src="js/bootstrap.min.js"></script>-->
 	<script src="js/bootstrap.js"></script>
-    
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.8.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.8.1/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>    
 
 </body>
 

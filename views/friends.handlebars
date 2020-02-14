@@ -1,0 +1,108 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>Gamer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom-theme.css">   
+</head>
+
+<body>
+     
+    
+    <!--
+    <div class="navbar-collapse collapse" id="headerText">
+		<span class="navbar-brand">
+		</span>
+	</div>
+    -->
+
+	
+    <nav class="navbar sticky-top" style="background-color:#16141A">
+        <h3 class="mx-auto" style="color:#FF007A">FRIENDS</h3>
+    </nav>
+     
+    <div class="container">
+        
+
+        {{#each suggestions}}
+
+        <div class="row top-buffer">         
+            <div class="col-4">
+                <img src="{{imageURL}}" alt="{{name}}" class="img-fluid">
+            </div>
+            <div class="col-8">
+                <h3 class="text-light">{{name}}<a href="./chats">
+                <img src="https://i.imgur.com/SowfKJR.png" class="float-right chatIcon">
+                </a></h3> 
+                <p class="text-light">{{genres}}</p> 
+            </div>
+        </div>
+
+        <hr>
+        {{/each}}
+
+    </div>
+    
+    <nav class="navbar fixed-bottom" id="nextMenu"
+    style="background-color:#16141A">
+        <!--
+        <div class="row justify-content-center">
+            <div class="col" align="center">
+                <a href="./friends">
+                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
+                <p>Friends</p>
+                </a>
+            </div>
+
+            <div class="col" align="center">
+                <a href="./chat">
+                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
+                <p>Chat</p>
+                </a>
+            </div>
+            
+            <div class="col" align="center">
+                <a href="./games">
+                <img src="https://i.imgur.com/aBaBRcp.png" class="navItem">
+                <p>Games</p>
+                </a>
+            </div>
+        
+        </div>
+        -->
+        <div class="mr-auto" align="center">
+                <a href="./friends">
+                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
+                <p class="text-light">FRIENDS</p>
+                </a>
+        </div>
+        <div class="mx-auto" align="center">
+                <a href="./chats">
+                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
+                <p class="text-light">CHAT</p>
+                </a>
+        </div>
+        <div class="ml-auto" align="center">
+                <a href="./games">
+                <img src="https://i.imgur.com/aBaBRcp.png" class="navItem">
+                <p class="text-light">GAMES</p>
+                </a>
+        </div>
+    </nav>
+    
+    
+    
+    <script src="js/jquery-1.11.0.js"></script>	
+    <!--<script src="js/bootstrap.min.js"></script>-->
+	<script src="js/bootstrap.js"></script>
+    
+
+</body>
+
+</html>
