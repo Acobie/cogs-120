@@ -2,17 +2,27 @@ body { background: #221F27 !important;}
 
 .top-buffer { margin-top:20px; }
 
-#nextMenu {
+/*#nextMenu {
     
-}
+} */
 
-.emptyheight {
-    height: 250px;
-}
-
-.sendMsg {
+#sendMsg {
+    background-color: #FFFFFF;
     position: relative;
     bottom: 0%;
+    width: 80vw;
+    max-width: 800px;
+    box-sizing: border-box;
+    border: white;
+    border-radius: 9px;
+    padding-left: 10px;
+    height: 40px;
+    font-family: Open sans;
+}
+
+.sendBar {
+    position: absolute !important;
+    bottom:120px;
 }
 
 .textMsg {
@@ -23,8 +33,33 @@ body { background: #221F27 !important;}
     margin-bottom: 10px;
     margin-right: 10px;
     margin-left: 10px;   
-    position: absolute;
-    border-radius: 10px;
+    display: inline-block;
+    /*position: absolute;*/
+    padding-top:10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    max-width: 230px;
+    border-radius: 12px;
+}
+
+.userMsg {
+    background: white;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 0%;
+    margin-left: 10px;   
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    max-width: 230px;
+    min-width: 80px;
+    word-wrap: break-word;
+    border-radius: 12px;
+    float: right;
 }
 
 .onlineStatus {
@@ -96,3 +131,4 @@ body { background: #221F27 !important;}
 
     color: #000000;
 }
+

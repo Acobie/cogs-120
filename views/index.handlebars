@@ -101,10 +101,9 @@
     
     <nav class="navbar fixed-bottom" id="nextMenu"
     style="background-color:#16141A">
-        <a class="ml-auto" style="color:#FF007A" href="./suggestions">NEXT</a>
+        <a class="ml-auto" style="color:#FF007A" onclick="saveGenres(event)" href="./suggestions">NEXT</a>
     </nav>
-    
-    
+
     <script>
     var genres = ["0"];
     var genSize = 0;
@@ -130,6 +129,8 @@
             else{
                 genres.push(e.srcElement.id);
             }
+            //document.getElementById("nextMenu").style.visibility = "visible";       
+
             document.getElementById(e.srcElement.id).style.backgroundColor = "#FF007A";
             document.getElementById(e.srcElement.id).style.boxShadow =
             "7px 7px 8px rgba(0, 0, 0, 0.25) inset";
@@ -139,28 +140,31 @@
 
     }
 
-    $.cookie('usrGenres', genres, {expires: 1}); // expires in 1 day
+    //$.cookie('usrGenres', genres, {expires: 1}); // expires in 1 day
     //var id = $.cookie('usrGenres');
+    
 
     </script>
-   
+
     <script>
-        
+        function saveGenres(e) {
+            localStorage.setItem('usrGenres', JSON.stringify(genres));
+        }
     </script>
 
     <script src="js/jquery-1.11.0.js"></script>	
     <!--<script src="js/bootstrap.min.js"></script>-->
 	<script src="js/bootstrap.js"></script>
 
-<!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="/__/firebase/7.8.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-<script src="/__/firebase/7.8.1/firebase-analytics.js"></script>
+<script>
+    db.ref("genres");
+    var genreRef = ref.child("users");
+    genreRef.set({
+        likedGenres: genres 
+    });
 
-<!-- Initialize Firebase -->
-<script src="/__/firebase/init.js"></script>    
+</script>
 
 </body>
 

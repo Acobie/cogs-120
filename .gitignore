@@ -11,5 +11,7 @@ pids
 logs
 results
 
+cogs120bash-firebase-adminsdk-3wd9v-947e5a2b9b.json
 npm-debug.log
 #node_modules
+node_modules/*

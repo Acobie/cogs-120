@@ -7,16 +7,37 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
+var admin = require("firebase-admin");
+var serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://cogs120bash.firebaseio.com"
+});
+
+var db = admin.database();
+var ref = db.ref("users");
+
+var usersRef = ref.child("preferences");
+usersRef.set({
+    test1: {
+        genres: ["Action"],
+        friends: ["A. Dude","B. Nice"]
+    }
+});
 
 var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
 var suggestions = require('./routes/suggestions');
+var add = require('./routes/add');
 var friends = require('./routes/friends');
 var chats = require('./routes/chats');
 var chatrooms = require('./routes/chatrooms');
 var login = require('./routes/login');
 var games = require('./routes/games');
+var profile = require('./routes/profile');
+var editprofile = require('./routes/editprofile');
 
 var app = express();
 
@@ -49,6 +70,9 @@ app.get('/chats', chats.view);
 app.get('/chatrooms', chatrooms.view);
 app.get('/', login.view);
 app.get('/games', games.view);
+app.get('/add', add.view);
+app.get('/profile', profile.view);
+app.get('/editprofile', editprofile.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

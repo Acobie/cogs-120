@@ -1,0 +1,220 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>Gamer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom-theme.css">   
+</head>
+
+<body>
+     
+    
+    <!--
+    <div class="navbar-collapse collapse" id="headerText">
+		<span class="navbar-brand">
+		</span>
+	</div>
+    -->
+
+	
+    <nav class="navbar navbar-static-top" style="background-color:#16141A">
+        <a class="mr-auto" style="color:#FF007A" onclick="saveNewFriends(event)" href="./friends">BACK</a>
+    </nav>
+     
+    <div class="container">
+    
+       
+        <h3 class="text-center text-light top-buffer">Add some new friends!</h3>
+        
+        <!--
+        {{#each suggestions}}
+
+        <div class="row top-buffer">         
+            <div class="col-4">
+                <img src="{{imageURL}}" alt="{{name}}" class="img-fluid">
+            </div>
+            <div class="col-8">
+                <h3 class="text-light">{{name}}<button class="add" onclick="">+
+                Add</button></h3> 
+                <p class="text-light">{{genres}}</p> 
+            </div>
+        </div>
+        <hr>
+
+        {{/each}}
+        -->
+    <script>
+        var matches = 0;
+        {{#each suggestions}}
+            var gens = "{{genres}}";
+            var gensArr = gens.split(",");
+            var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+            var friendsArr = JSON.parse(localStorage.getItem('usrFriends'));
+            var fName = "{{name}}"
+
+            var len = gensArr.length;
+            var suggest = false;
+
+            for(var i = 0; i < len; i++){
+                for(var x = 0; x < usrGens.length; x++){
+                    if(gensArr[i].localeCompare(usrGens[x]) == 0){
+                        suggest = true;
+                    }
+                }
+            }
+                        
+            for(var z = 0; z < friendsArr.length; z++){
+                 if(fName.localeCompare(friendsArr[z]) == 0){
+                     suggest = false;
+                  }
+            }
+
+            if(suggest){
+                document.write("<div class='row top-buffer'>");
+                document.write("<div class='col-4'>");
+                document.write("<img src='{{imageURL}}'");
+                document.write("alt='{{name}}'");
+                document.write("class='img-fluid'>");
+                document.write("</div>");
+                document.write("<div class='col-8'>");
+                document.write("<h3 class='text-light'>");
+                document.write("{{name}}");
+                document.write("<button class='add'");
+                document.write("id='{{name}}'");
+                document.write("onclick='addF(event)' background-color='#221F27'>");
+                document.write("+ Add</button></h3>"); 
+                document.write("<p class='text-light'>");
+                document.write("{{genres}}</p>"); 
+                document.write("</div>");
+                document.write("</div>");
+                document.write("<hr>");
+                matches++;
+            }
+
+        {{/each}}
+            //console.log("test");
+        if(matches == 0){
+            document.write("<div class='text-center top-buffer'>");
+            document.write("<h5 class='text-light'>You've added everyone with similar interests! :)</h5>");
+            document.write("</div>");
+        }
+    </script>
+    </div>
+    
+    <nav class="navbar fixed-bottom" id="nextMenu"
+    style="background-color:#16141A">
+        <!--
+        <div class="row justify-content-center">
+            <div class="col" align="center">
+                <a href="./friends">
+                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
+                <p>Friends</p>
+                </a>
+            </div>
+
+            <div class="col" align="center">
+                <a href="./chat">
+                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
+                <p>Chat</p>
+                </a>
+            </div>
+            
+            <div class="col" align="center">
+                <a href="./games">
+                <img src="https://i.imgur.com/aBaBRcp.png" class="navItem">
+                <p>Games</p>
+                </a>
+            </div>
+        
+        </div>
+        -->
+        <div class="mr-auto" align="center">
+                <a href="./friends">
+                <img src="https://i.imgur.com/RMzI7Lb.png" class="navItem">
+                <p class="text-light">FRIENDS</p>
+                </a>
+        </div>
+        <div class="mx-auto" align="center">
+                <a href="./chats">
+                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
+                <p class="text-light">CHAT</p>
+                </a>
+        </div>
+        <div class="ml-auto" align="center">
+                <a href="./profile">
+                <img src="https://i.imgur.com/eClV1JZ.png" class="navItem">
+                <p class="text-light">PROFILE</p>
+                </a>
+        </div>
+    </nav>
+    
+    <script>
+        //var friends = ["0"];
+        var newFriends = JSON.parse(localStorage.getItem('usrFriends'));
+        var fSize = newFriends.length;
+        if(newFriends.includes("0")){
+            fSize--;
+        }
+        function addF(e) {
+            if(newFriends.includes(e.srcElement.id)){
+                var ind = newFriends.indexOf(e.srcElement.id);
+                newFriends[ind] = "0";
+                
+                //$(this).text('+ Add');
+                document.getElementById(e.srcElement.id).innerText = '+ Add';
+                //document.getElementById(e.srcElement.id).style.backgroundColor =
+                //"#FFFFFF";
+                //document.getElementById(e.srcElement.id).style.boxShadow = 
+                //"7px 7px 8px rgba(0, 0, 0, 0.25)";
+                //document.getElementById("next-menu").style.visibility = "hidden";       
+                fSize--;
+                //if(fSize == 0){
+                //    $('#nextMenu').fadeOut(500);
+                //}
+            }
+            else {
+                if(newFriends.includes("0")){
+                    var ind = newFriends.indexOf("0");
+                    newFriends[ind] = e.srcElement.id;
+                }
+                else{
+                    newFriends.push(e.srcElement.id);
+                }
+                //$(this).text('Added');
+                document.getElementById(e.srcElement.id).innerText = 'Added';
+                //document.getElementById(e.srcElement.id).style.backgroundColor = "#FF007A";
+                //document.getElementById(e.srcElement.id).style.boxShadow =
+                //"7px 7px 8px rgba(0, 0, 0, 0.25) inset";
+                fSize++;
+                //$('#nextMenu').fadeIn(500);
+            }
+
+        }
+    </script>
+    
+    <script>
+        function saveNewFriends(e) {
+            localStorage.setItem('usrFriends', JSON.stringify(newFriends));
+        }
+    </script>
+
+    <script>
+        var gens = localStorage.getItem('usrGenres');
+        console.log(gens);
+    </script>
+    
+    <script src="js/jquery-1.11.0.js"></script>	
+    <!--<script src="js/bootstrap.min.js"></script>-->
+	<script src="js/bootstrap.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Profile</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/custom-theme.css">
+</head>
+
+<body>
+    <!--<div style="background-color:#16141A"><a href="javascript:history.back()" style="font-size: 26px; color:white;">&#x293A;</a></div>
+    -->
+    <nav class="navbar navbar-static-top" style="background-color:#16141A">
+        <h3>PROFILE</h3>
+    </nav>
+
+    <div class="container">
+    
+    <img style="max-width: 245px; margin-top: 2.5vh;" alt="Profile pic" src="https://i.imgur.com/eClV1JZ.png">        
+    <script>
+        var usr = JSON.parse(localStorage.getItem('usrName'));
+        if(usr == null){
+            document.write("<h2>User Name</h2>");
+        }
+        else {
+            document.write("<h2>"+usr+"</h2>");
+        }
+    </script>
+    <p class="styledText" style="color: #0084E4; letter-spacing: 0.07em; margin-top: 3.8vh;"><a href="./editprofile">Edit profile</a></p>
+    <hr class="divider">
+    <!-- games -->
+    <!-- NOT IMPLEMENTED CURRENTLY
+    <h2 style="font-size:21px; text-align: left; margin-left: 42px;">Your <b style="font-weight:850;">TOP GAMES</b>:</h2>
+    <div id="games" style="width: 100%; text-align:left; display:block;">
+        <ol style="margin-left: 42px;">
+            <li id="game1">FIFA 19 (PS4)
+                <img class="thumbnail" src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.15752-9/86352556_1044389975943511_5458460063742033920_n.png?_nc_cat=100&_nc_ohc=OUqeSCovwxYAX94vqf7&_nc_ht=scontent-lax3-1.xx&oh=4c4d3dba47671b60159ef839533e0f08&oe=5EB9A8E7">
+            </li>
+            <li id="game2">League of Legends (PC)
+                <img class="thumbnail" src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.15752-9/86177126_2536015646509578_657237258801250304_n.png?_nc_cat=105&_nc_ohc=gRlU4qbMX3kAX-HWRO4&_nc_ht=scontent-lax3-1.xx&oh=3fe7b23aa5b21b425c75b408d4d04de8&oe=5ECD1615">
+            </li>
+            <li id="game3">Super Smash Bros. Ultimate (Switch)
+                <img class="thumbnail" src="https://scontent-lax3-1.xx.fbcdn.net/v/t1.15752-9/84667048_815328615612390_9209231673076482048_n.png?_nc_cat=101&_nc_ohc=kdZaQ2OcS38AX-SFl25&_nc_ht=scontent-lax3-1.xx&oh=797d08060ab44b3244ede61fbb56f54a&oe=5EB677CB">
+            </li>
+        </ol>
+    </div> 
+    <hr class="divider">
+    -->
+    <h2 style="font-size:21px; text-align: left; margin-left: 42px;">Your <b style="font-weight:850;">TOP GENRES</b>:</h2>
+    <ol style="margin-left: 42px;">
+        <script>
+            var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+
+            for(var x = 0; x < usrGens.length; x++){
+                document.write("<li>"+usrGens[x]+"</li>");
+            }
+        </script>
+    </ol>    
+    <br>
+
+    <p class="styledText" style="text-decoration:underline;">
+        <a style="color:#E90000;" href="./">LOG OUT</a>
+    </p>
+    
+    </div>
+    
+    <nav class="navbar fixed-bottom" id="nextMenu"
+    style="background-color:#16141A">
+        <!--
+        <div class="row justify-content-center">
+            <div class="col" align="center">
+                <a href="./friends">
+                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
+                <p>Friends</p>
+                </a>
+            </div>
+
+            <div class="col" align="center">
+                <a href="./chat">
+                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
+                <p>Chat</p>
+                </a>
+            </div>
+            
+            <div class="col" align="center">
+                <a href="./games">
+                <img src="https://i.imgur.com/aBaBRcp.png" class="navItem">
+                <p>Games</p>
+                </a>
+            </div>
+        
+        </div>
+        -->
+        <div class="mr-auto" align="center">
+                <a href="./friends">
+                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
+                <p class="text-light">FRIENDS</p>
+                </a>
+        </div>
+        <div class="mx-auto" align="center">
+                <a href="./chats">
+                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
+                <p class="text-light">CHAT</p>
+                </a>
+        </div>
+        <div class="ml-auto" align="center">
+                <a href="./profile">
+                <img src="https://i.imgur.com/RgbcMMK.png" class="navItem">
+                <p class="text-light">PROFILE</p>
+                </a>
+        </div>
+    </nav>
+
+    
+
+    <script src="js/jquery-1.11.0.js"></script>	
+    <!--<script src="js/bootstrap.min.js"></script>-->
+	<script src="js/bootstrap.js"></script>
+
+</body>
+
+
+</html>

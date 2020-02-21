@@ -28,8 +28,59 @@
     </nav>
      
     <div class="container">
-        
 
+    <div class="text-center top-buffer">
+        <a href="./add">
+        <div class="col">
+        <img src="https://i.imgur.com/gLoH5kr.png" class="navItem">
+        </div>
+        <div class="col">
+        <h3>Find New Friends</h3>
+        </div>
+        </a>
+    </div>
+
+    <script>
+        var matches;
+        {{#each suggestions}}
+            var name = "{{name}}";
+            var fArray = JSON.parse(localStorage.getItem('usrFriends')); 
+
+            var display = false;
+
+            for(var i = 0; i < fArray.length; i++){
+                if(fArray[i].localeCompare(name) == 0){
+                    display = true;
+                }
+            }
+
+            if(display){
+                document.write("<div class='row top-buffer'>");
+                document.write("<div class='col-4'>");
+                document.write("<img src='{{imageURL}}'");
+                document.write("alt='{{name}}'");
+                document.write("class='img-fluid'>");
+                document.write("</div>");
+                document.write("<div class='col-8'>");
+                document.write("<h3 class='text-light'");
+                document.write("id='{{name}}'>");
+                document.write("{{name}}");
+                document.write("<a href='./chatrooms'>");
+                document.write("<img src='https://i.imgur.com/DGuauBF.png'");
+                document.write("class='float-right chatIcon'>");
+                document.write("</a></h3>");
+                document.write("<p class='text-light'>");
+                document.write("{{genres}}</p>"); 
+                document.write("</div>");
+                document.write("</div>");
+                document.write("<hr>");
+            }
+
+        {{/each}}
+            //console.log("test");
+    </script>
+        
+        <!--
         {{#each suggestions}}
 
         <div class="row top-buffer">         
@@ -46,6 +97,7 @@
 
         <hr>
         {{/each}}
+        -->
 
     </div>
     
@@ -78,7 +130,7 @@
         -->
         <div class="mr-auto" align="center">
                 <a href="./friends">
-                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
+                <img src="https://i.imgur.com/RMzI7Lb.png" class="navItem">
                 <p class="text-light">FRIENDS</p>
                 </a>
         </div>
@@ -89,12 +141,13 @@
                 </a>
         </div>
         <div class="ml-auto" align="center">
-                <a href="./games">
-                <img src="https://i.imgur.com/aBaBRcp.png" class="navItem">
-                <p class="text-light">GAMES</p>
+                <a href="./profile">
+                <img src="https://i.imgur.com/eClV1JZ.png" class="navItem">
+                <p class="text-light">PROFILE</p>
                 </a>
         </div>
     </nav>
+    
     
     
     

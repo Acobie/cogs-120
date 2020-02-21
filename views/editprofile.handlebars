@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Profile</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-static-top" style="background-color:#16141A">
+        <a href="javascript:history.back()" style="font-size: 26px; color:white;">&#x293A;</a>
+    </nav>
+
+    <div class="container">
+    
+    <img style="max-width: 150px; margin-top: 2.5vh;" alt="Profile pic" src="https://i.imgur.com/eClV1JZ.png">        
+    <h2 style="font-size: 16px;  margin-left: 42px;  text-align: left;">Profile name:
+        <input type="text" placeholder="User's Name" value="User's Name" style="margin-left: 10px; max-width: 300px; width: 60vw; font-size: 14px; line-height: 32px;">
+    </h2>
+    <h2 style="font-size: 16px;  margin-left: 42px;  text-align: left;">Change password:
+        <input type="password" placeholder="Password" style="margin-left: 10px; max-width: 300px; width: 60vw; font-size: 14px; line-height: 32px;">
+    </h2>
+
+    <hr class="divider">
+
+    <h2 style="font-size:16px; text-align: left; margin-left: 42px;">Genres:</h2>
+    <ol style="margin-left: 42px; font-size: 14px;">
+        <script>
+            
+            var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+            
+            var gens = ["Action", "Adventure", "Casual", "Puzzle", "Racing", "RPG", "Sports", "Strategy"];
+
+            var len = usrGens.length;
+            if(usrGens.includes("0")){
+                len--;
+            }
+
+            for(var i = 0; i < len; i++){
+                var elemID = "game"+i;
+                console.log(elemID);
+                document.write("<li style='font-size: 14px;'>");
+                document.write("<select id=");
+                document.write(elemID); 
+                document.write(" style='font-size: 14px;'>");
+                for(var x = 0; x < gens.length; x++){
+                    if(gens[x].localeCompare(usrGens[i]) == 0){
+                        document.write("<option selected>"+gens[x]+"</option>");
+                    } else {
+                        document.write("<option>"+gens[x]+"</option>");
+                    }
+                }
+                document.write("</select>");
+                document.write("</li>");
+            }
+        </script>
+    </ol>    
+    
+    <div style="text-align: center;">
+        <a class="btn btn-default mr-auto" id="save" href="./profile" onclick="saveNewGens(event)" style="font-size: 14px; padding: 8px;">Save Changes</a>
+        <br>
+        <a class="btn btn-default mr-auto" id="cancel" href="./profile" style="font-size: 14px; padding: 8px">Cancel</a>
+    </div>
+    
+    </div>
+
+    <script>
+        function saveNewGens(e) {
+            var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+            
+            var newGens = [""];
+
+            var len = usrGens.length;
+            if(usrGens.includes("0")){
+                len--;
+            }
+            
+            newGens.pop();
+
+            for(var z = 0; z < len; z++){
+                var elemID = "game" + z;
+                newGens.push(document.getElementById(elemID).value);
+            }
+            
+            console.log(newGens);    
+            localStorage.setItem('usrGenres', JSON.stringify(newGens));
+
+            
+        }
+    </script>
+
+    <script src="js/jquery-1.11.0.js"></script>	
+    <!--<script src="js/bootstrap.min.js"></script>-->
+	<script src="js/bootstrap.js"></script>
+
+</body>
+
+
+</html>
