@@ -5,9 +5,9 @@ body {
 
 .top-buffer { margin-top:20px; }
 
-/*#nextMenu {
-    
-} */
+#nextMenu {
+  visibility: hidden;  
+} 
 
 #sendMsg {
     background-color: #FFFFFF;
