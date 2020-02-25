@@ -1,5 +1,7 @@
-body { background: #221F27 !important;
-       padding-bottom: 70px; }
+body {
+    background: #221F27 !important;
+    padding-bottom: 70px
+}
 
 .top-buffer { margin-top:20px; }
 
@@ -11,7 +13,7 @@ body { background: #221F27 !important;
     background-color: #FFFFFF;
     position: relative;
     bottom: 0%;
-    width: 80vw;
+    width: 65vw;
     max-width: 980px;
     box-sizing: border-box;
     border: white;
@@ -35,7 +37,6 @@ body { background: #221F27 !important;
     margin-right: 10px;
     margin-left: 10px;   
     display: inline-block;
-    /*position: absolute;*/
     padding-top:10px;
     padding-left: 3px;
     padding-right: 3px;
@@ -60,12 +61,12 @@ body { background: #221F27 !important;
     min-width: 18px;
     word-wrap: break-word;
     border-radius: 12px;
-    float: right;
+    float:right;
 }
 
 .onlineStatus {
-    max-width: 16px;
     width: 4.5vw;
+    max-width: 16px;
 }
 
 .chatroomPic {
@@ -91,7 +92,7 @@ body { background: #221F27 !important;
 
 .navItem {
     height: 10vh;
-    max-height: 25px;
+    max-height: 35px;
 }
 
 #pic {
@@ -135,4 +136,5 @@ body { background: #221F27 !important;
 
     color: #000000;
 }
+
 
