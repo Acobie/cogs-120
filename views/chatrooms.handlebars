@@ -24,10 +24,10 @@
 
 	<div style="background-color:#16141A"><a href="javascript:history.back()" style="font-size: 26px; color:white;">&#x293A;</a></div>
     <nav class="navbar sticky-top" style="background-color:#16141A">
-        <div class="mx-auto">
+        <div class="mx-auto text-center">
             <img src="https://i.imgur.com/eClV1JZ.png" class="img-fluid
             chatroomPic">
-            <h3 class="text-light text-center">A. Dude</h3>
+            <h4 class="text-light text-center">A. Dude</h4>
             <h6 class="text-light text-center">
                 <img
                 src="https://miro.medium.com/max/512/1*nZ9VwHTLxAfNCuCjYAkajg.png"
@@ -38,57 +38,40 @@
         
     </nav>
      
-    <div class="container">
-        <div class="msgs">
+    <div class="container" style="height: 72vh;">
+        <div class="msgs" style="height: 80%; overflow-y: auto;">
             <div class="textMsg">
-                <p class="text-center">LETS PLAY :D</p>
+                <p class="text-left">LETS PLAY :D</p>
             </div>
         </div>
-
-        <div class="sendBar">
-            <input type="text" id="sendMsg" placeholder="Send a Message...">
-            <button class="btn-default" onclick="sendMsg()">Send</button>
+        <div class="sendBar" style="background-color: #221F27; padding-top: 5px;">
+            <input type="text" id="sendMsg" placeholder="Send a Message..."> <button id="sendBtn" onclick="sendMsg()">Send</button>
         </div>
     </div>
 
     <script>
+        //on enter, send message
+        var input = document.getElementById("sendMsg");
+        input.addEventListener("keyup", function(event) {
+            if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("sendBtn").click();
+            }
+        });
+        
+        // on button click, send message
         function sendMsg() {
             var msg = $("#sendMsg").val();
             if(msg != "") {
                 $("#sendMsg").val("");
                 //var html = "<div class='textMsg'><p class='text-right'>" + msg + "</p></div>";
-                $(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-center'>" + msg + "</p></div>");
+                $(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msg + "</p></div>");
             }
         }
     </script>
     
     <nav class="navbar fixed-bottom" id="nextMenu"
     style="background-color:#16141A">
-        <!--
-        <div class="row justify-content-center">
-            <div class="col" align="center">
-                <a href="./friends">
-                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
-                <p>Friends</p>
-                </a>
-            </div>
-
-            <div class="col" align="center">
-                <a href="./chat">
-                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
-                <p>Chat</p>
-                </a>
-            </div>
-            
-            <div class="col" align="center">
-                <a href="./games">
-                <img src="https://i.imgur.com/aBaBRcp.png" class="navItem">
-                <p>Games</p>
-                </a>
-            </div>
-        
-        </div>
-        -->
         <div class="mr-auto" align="center">
                 <a href="./friends">
                 <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
@@ -97,11 +80,11 @@
         </div>
         <div class="mx-auto" align="center">
                 <a href="./chats">
-                <img src="https://i.imgur.com/wnir7Fg.png" class="navItem">
+                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
                 <p class="text-light">CHAT</p>
                 </a>
         </div>
-        <div class="ml-auto" align="center">
+         <div class="ml-auto" align="center">
                 <a href="./profile">
                 <img src="https://i.imgur.com/eClV1JZ.png" class="navItem">
                 <p class="text-light">PROFILE</p>
@@ -119,4 +102,5 @@
 </body>
 
 </html>
+
 
