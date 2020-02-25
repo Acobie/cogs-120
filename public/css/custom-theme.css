@@ -1,4 +1,5 @@
-body { background: #221F27 !important;}
+body { background: #221F27 !important;
+       padding-bottom: 70px; }
 
 .top-buffer { margin-top:20px; }
 
@@ -87,7 +88,7 @@ body { background: #221F27 !important;}
 }
 
 .navItem {
-    max-height: 50px;
+    max-height: 25px;
 }
 
 #pic {
