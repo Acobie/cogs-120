@@ -59,9 +59,12 @@
             }
         });
         
+        var newMsgs = [""];
+
         // on button click, send message
         function sendMsg() {
             var msg = $("#sendMsg").val();
+            nreMsgs.push(msg);
             if(msg != "") {
                 $("#sendMsg").val("");
                 //var html = "<div class='textMsg'><p class='text-right'>" + msg + "</p></div>";
@@ -70,8 +73,7 @@
         }
     </script>
     
-    <nav class="navbar fixed-bottom" id="nextMenu"
-    style="background-color:#16141A">
+    <nav class="navbar fixed-bottom" style="background-color:#16141A">
         <div class="mr-auto" align="center">
                 <a href="./friends">
                 <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
@@ -91,6 +93,13 @@
                 </a>
         </div>
     </nav>
+    
+    
+    <script>
+        function saveNewMsgs(e) {
+            localStorage.setItem('A. Dude', JSON.stringify(newMsgs));
+        }
+    </script>
     
     
     

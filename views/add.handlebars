@@ -85,10 +85,14 @@
                 document.write("<div class='col-8'>");
                 document.write("<h3 class='text-light'>");
                 document.write("{{name}}");
+                document.write("<img src='https://i.imgur.com/taTJR2X.png' id='{{name}}' class='addButton' onclick='addF(event)'>");
+                document.write("</h3>"); 
+                /*
                 document.write("<button class='add'");
                 document.write("id='{{name}}'");
                 document.write("onclick='addF(event)' background-color='#221F27'>");
                 document.write("+ Add</button></h3>"); 
+                */
                 document.write("<p class='text-light'>");
                 document.write("{{genres}}</p>"); 
                 document.write("</div>");
@@ -107,33 +111,7 @@
     </script>
     </div>
     
-    <nav class="navbar fixed-bottom" id="nextMenu"
-    style="background-color:#16141A">
-        <!--
-        <div class="row justify-content-center">
-            <div class="col" align="center">
-                <a href="./friends">
-                <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
-                <p>Friends</p>
-                </a>
-            </div>
-
-            <div class="col" align="center">
-                <a href="./chat">
-                <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
-                <p>Chat</p>
-                </a>
-            </div>
-            
-            <div class="col" align="center">
-                <a href="./games">
-                <img src="https://i.imgur.com/aBaBRcp.png" class="navItem">
-                <p>Games</p>
-                </a>
-            </div>
-        
-        </div>
-        -->
+    <nav class="navbar fixed-bottom" style="background-color:#16141A">
         <div class="mr-auto" align="center">
                 <a href="./friends">
                 <img src="https://i.imgur.com/RMzI7Lb.png" class="navItem">
@@ -166,17 +144,9 @@
                 var ind = newFriends.indexOf(e.srcElement.id);
                 newFriends[ind] = "0";
                 
-                //$(this).text('+ Add');
-                document.getElementById(e.srcElement.id).innerText = '+ Add';
-                //document.getElementById(e.srcElement.id).style.backgroundColor =
-                //"#FFFFFF";
-                //document.getElementById(e.srcElement.id).style.boxShadow = 
-                //"7px 7px 8px rgba(0, 0, 0, 0.25)";
-                //document.getElementById("next-menu").style.visibility = "hidden";       
+                //document.getElementById(e.srcElement.id).innerText = '+ Add';
+                document.getElementById(e.srcElement.id).src = 'https://i.imgur.com/taTJR2X.png';
                 fSize--;
-                //if(fSize == 0){
-                //    $('#nextMenu').fadeOut(500);
-                //}
             }
             else {
                 if(newFriends.includes("0")){
@@ -186,13 +156,8 @@
                 else{
                     newFriends.push(e.srcElement.id);
                 }
-                //$(this).text('Added');
-                document.getElementById(e.srcElement.id).innerText = 'Added';
-                //document.getElementById(e.srcElement.id).style.backgroundColor = "#FF007A";
-                //document.getElementById(e.srcElement.id).style.boxShadow =
-                //"7px 7px 8px rgba(0, 0, 0, 0.25) inset";
+                document.getElementById(e.srcElement.id).src = 'https://i.imgur.com/Zvhz7gq.png';
                 fSize++;
-                //$('#nextMenu').fadeIn(500);
             }
 
         }
