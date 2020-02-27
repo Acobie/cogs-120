@@ -22,7 +22,7 @@
 	</div>
     -->
 
-	<div style="background-color:#16141A"><a href="javascript:history.back()" style="font-size: 26px; color:white;">&#x293A;</a></div>
+	<div style="background-color:#16141A"><a href="javascript:history.back()" onclick="saveNewMsgs(event)" style="font-size: 26px; color:white;">&#x293A;</a></div>
     <nav class="navbar sticky-top" style="background-color:#16141A">
         <div class="mx-auto text-center">
             <img src="https://i.imgur.com/eClV1JZ.png" class="img-fluid
@@ -45,7 +45,8 @@
             </div>
         </div>
         <div class="sendBar" style="background-color: #221F27; padding-top: 5px;">
-            <input type="text" id="sendMsg" placeholder="Send a Message..."> <button id="sendBtn" onclick="sendMsg()">Send</button>
+            <input type="text" id="sendMsg" placeholder="Send a Message...">
+            <button id="sendBtn" onclick="sendMsg()">Send</button>
         </div>
     </div>
 
@@ -59,13 +60,23 @@
             }
         });
         
-        var newMsgs = [""];
+        var msgHistory = localStorage.getItem('A. Dude');
+        if( msgHistory == "" || msgHistory == null ) {
 
+        } else {
+            var msgArr = JSON.parse(msgHistory);
+            for(var i = 0; i < msgArr.length; i++){
+                $(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msgArr[i] + "</p></div>");
+            }
+        }
+
+        var newMsgs = [""];
+        newMsgs.pop();
         // on button click, send message
         function sendMsg() {
             var msg = $("#sendMsg").val();
-            nreMsgs.push(msg);
             if(msg != "") {
+                newMsgs.push(msg);
                 $("#sendMsg").val("");
                 //var html = "<div class='textMsg'><p class='text-right'>" + msg + "</p></div>";
                 $(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msg + "</p></div>");
@@ -74,19 +85,19 @@
     </script>
     
     <nav class="navbar fixed-bottom" style="background-color:#16141A">
-        <div class="mr-auto" align="center">
+        <div class="mr-auto" align="center" onclick="saveNewMsgs(event)">
                 <a href="./friends">
                 <img src="https://i.imgur.com/hgZbx0c.png" class="navItem">
                 <p class="text-light">FRIENDS</p>
                 </a>
         </div>
-        <div class="mx-auto" align="center">
-                <a href="./chats">
+        <div class="mx-auto" align="center" onclick="saveNewMsgs(event)">
+                <a href="./chatrooms">
                 <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
                 <p class="text-light">CHAT</p>
                 </a>
         </div>
-         <div class="ml-auto" align="center">
+         <div class="ml-auto" align="center" onclick="saveNewMsgs(event)">
                 <a href="./profile">
                 <img src="https://i.imgur.com/xwPv2OH.png" class="navItem">
                 <p class="text-light">PROFILE</p>
@@ -97,7 +108,19 @@
     
     <script>
         function saveNewMsgs(e) {
-            localStorage.setItem('A. Dude', JSON.stringify(newMsgs));
+            var getMsgs = localStorage.getItem('A. Dude');
+            if( getMsgs == "" || getMsgs == null ) {
+                var jsonToSave = JSON.stringify(newMsgs); 
+            } else {
+                var jsonMsg = JSON.parse(getMsgs);
+                var jsonToSave = JSON.stringify(jsonMsg.concat(newMsgs));
+            }
+            localStorage.setItem('A. Dude', jsonToSave);
+            /*
+            var resetArr = [""];
+            localStorage.setItem('A. Dude', resetArr);
+            */
+
         }
     </script>
     
