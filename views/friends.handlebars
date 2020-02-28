@@ -62,10 +62,9 @@
                 document.write("class='img-fluid'>");
                 document.write("</div>");
                 document.write("<div class='col-8'>");
-                document.write("<h3 class='text-light'");
-                document.write("id='{{name}}'>");
+                document.write("<h3 class='text-light'>");
                 document.write("{{name}}");
-                document.write("<a href='./chatrooms'>");
+                document.write("<a href='./chatrooms' id='{{name}}' onclick='saveName(this.id)'>");
                 document.write("<img src='https://i.imgur.com/DGuauBF.png'");
                 document.write("class='float-right chatIcon'>");
                 document.write("</a></h3>");
@@ -103,8 +102,14 @@
                 </a>
         </div>
     </nav>
-    
-    
+   
+    <script>
+        function saveName(inputId) {
+            var cName = inputId;
+            console.log(cName);
+            localStorage.setItem('chatName', JSON.stringify(cName));
+        }
+    </script>
     
     
     <script src="js/jquery-1.11.0.js"></script>	
