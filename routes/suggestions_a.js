@@ -5,5 +5,5 @@
 var data = require("../suggestions.json");
 
 exports.view = function(req, res){
-  res.render('suggestions_b', data);
+    res.render('suggestions_a', data);
 };

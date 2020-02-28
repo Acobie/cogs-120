@@ -24,7 +24,7 @@
 
 	
     <nav class="navbar navbar-static-top" style="background-color:#16141A">
-        <a class="mr-auto" style="color:#FF007A" href="./home">&#x293A;</a>
+        <a class="mr-auto" style="font-size: 35px; color:white;" href="./home">&#x293A;</a>
     </nav>
      
     <div class="container">
@@ -81,10 +81,14 @@
                 document.write("<div class='col-8'>");
                 document.write("<h3 class='text-light'>");
                 document.write("{{name}}");
+                document.write("<img src='https://i.imgur.com/taTJR2X.png' id='{{name}}' class='addButton' onclick='addF(event)'>");
+                document.write("</h3>"); 
+                /*
                 document.write("<button class='add'");
                 document.write("id='{{name}}'");
                 document.write("onclick='addF(event)' background-color='#221F27'>");
                 document.write("+ Add</button></h3>"); 
+                */
                 document.write("<p class='text-light'>");
                 document.write(mutual + "</p>"); 
                 document.write("</div>");
@@ -97,8 +101,7 @@
     </script>
     </div>
     
-    <nav class="navbar fixed-bottom" id="nextMenu"
-    style="background-color:#16141A">
+    <nav class="navbar fixed-bottom" style="background-color:#16141A">
         <a class="float-right ml-auto" style="color:#FF007A"
         onclick="saveFriends(event)" href="./friends">FINISH</a>
     </nav>
@@ -113,8 +116,9 @@
                 friends[ind] = "0";
                 
                 //$(this).text('+ Add');
-                document.getElementById(e.srcElement.id).innerText = '+ Add';
-                document.getElementById(e.srcElement.id).className="add";
+                document.getElementById(e.srcElement.id).src = 'https://i.imgur.com/taTJR2X.png';
+                //document.getElementById(e.srcElement.id).innerText = '+ Add';
+                //document.getElementById(e.srcElement.id).className="add";
                 //document.getElementById(e.srcElement.id).style.backgroundColor =
                 //"#FFFFFF";
                 //document.getElementById(e.srcElement.id).style.boxShadow = 
@@ -134,11 +138,12 @@
                     friends.push(e.srcElement.id);
                 }
                 //$(this).text('Added');
-                document.getElementById(e.srcElement.id).innerText = "&#x2713; Added";
+                document.getElementById(e.srcElement.id).src = 'https://i.imgur.com/Zvhz7gq.png';
+                //document.getElementById(e.srcElement.id).innerText = "Added";
                 //document.getElementById(e.srcElement.id).className = "added";
-                document.getElementById(e.srcElement.id).style.backgroundColor = "#FF007A";
-                document.getElementById(e.srcElement.id).style.boxShadow =
-                "7px 7px 8px rgba(0, 0, 0, 0.25) inset";
+                //document.getElementById(e.srcElement.id).style.backgroundColor = "#FF007A";
+                //document.getElementById(e.srcElement.id).style.boxShadow =
+                //"7px 7px 8px rgba(0, 0, 0, 0.25) inset";
                 fSize++;
                 //$('#nextMenu').fadeIn(500);
             }

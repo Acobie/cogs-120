@@ -39,6 +39,7 @@ var games = require('./routes/games');
 var profile = require('./routes/profile');
 var editprofile = require('./routes/editprofile');
 var suggB = require('./routes/suggestions_b');
+var suggA = require('./routes/suggestions_a');
 var newchat = require('./routes/newchat');
 
 var app = express();
@@ -76,6 +77,7 @@ app.get('/add', add.view);
 app.get('/profile', profile.view);
 app.get('/editprofile', editprofile.view);
 app.get('/suggestions_b', suggB.view);
+app.get('/suggestions_a', suggA.view);
 app.get('/newchat', newchat.view);
 
 http.createServer(app).listen(app.get('port'), function(){
