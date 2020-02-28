@@ -27,7 +27,12 @@
         <div class="mx-auto text-center">
             <img src="https://i.imgur.com/eClV1JZ.png" class="img-fluid
             chatroomPic">
-            <h4 class="text-light text-center">A. Dude</h4>
+            <h4 class="text-light text-center">
+            <script>
+                var cName = localStorage.getItem('chatName');
+                document.write(JSON.parse(cName));
+            </script>
+            </h4>
             <h6 class="text-light text-center">
                 <img
                 src="https://miro.medium.com/max/512/1*nZ9VwHTLxAfNCuCjYAkajg.png"
@@ -43,6 +48,19 @@
             <div class="textMsg">
                 <p class="text-left">LETS PLAY :D</p>
             </div>
+            <script>
+            var fName = JSON.parse(cName);
+            var msgHistory = localStorage.getItem(fName);
+            if( msgHistory == "" || msgHistory == null ) {
+
+            } else {
+                var msgArr = JSON.parse(msgHistory);
+                for(var i = 0; i < msgArr.length; i++){
+                //$(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msgArr[i] + "</p></div>");
+                    document.write("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msgArr[i] + "</p></div>");
+                }
+            }
+            </script>
         </div>
         <div class="sendBar" style="background-color: #221F27; padding-top: 5px;">
             <input type="text" id="sendMsg" placeholder="Send a Message...">
@@ -60,17 +78,8 @@
             }
         });
         
-        /*
-        var msgHistory = localStorage.getItem('A. Dude');
-        if( msgHistory == "" || msgHistory == null ) {
-
-        } else {
-            var msgArr = JSON.parse(msgHistory);
-            for(var i = 0; i < msgArr.length; i++){
-                $(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msgArr[i] + "</p></div>");
-            }
-        }
-        */
+        
+        
 
         var newMsgs = [""];
         newMsgs.pop();
@@ -94,7 +103,7 @@
                 </a>
         </div>
         <div class="mx-auto" align="center" onclick="saveNewMsgs(event)">
-                <a href="./chatrooms">
+                <a href="./chats">
                 <img src="https://i.imgur.com/SowfKJR.png" class="navItem">
                 <p class="text-light">CHAT</p>
                 </a>
@@ -110,14 +119,14 @@
     
     <script>
         function saveNewMsgs(e) {
-            var getMsgs = localStorage.getItem('A. Dude');
+            var getMsgs = localStorage.getItem(fName);
             if( getMsgs == "" || getMsgs == null ) {
                 var jsonToSave = JSON.stringify(newMsgs); 
             } else {
                 var jsonMsg = JSON.parse(getMsgs);
                 var jsonToSave = JSON.stringify(jsonMsg.concat(newMsgs));
             }
-            localStorage.setItem('A. Dude', jsonToSave);
+            localStorage.setItem(fName, jsonToSave);
             /*
             var resetArr = [""];
             localStorage.setItem('A. Dude', resetArr);

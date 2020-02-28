@@ -38,6 +38,7 @@ var login = require('./routes/login');
 var games = require('./routes/games');
 var profile = require('./routes/profile');
 var editprofile = require('./routes/editprofile');
+var suggB = require('./routes/suggestions_B');
 
 var app = express();
 
@@ -73,6 +74,7 @@ app.get('/games', games.view);
 app.get('/add', add.view);
 app.get('/profile', profile.view);
 app.get('/editprofile', editprofile.view);
+app.get('/suggestions_B', suggB.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

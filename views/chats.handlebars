@@ -29,9 +29,33 @@
      
     <div class="container">
         
-
-        {{#each suggestions}}
+        <script>
         
+            {{#each suggestions}}
+            var name = "{{name}}";
+            var fArray = JSON.parse(localStorage.getItem('usrFriends')); 
+            var display = false;
+            for(var i = 0; i < fArray.length; i++){
+                if(fArray[i].localeCompare(name) == 0){
+                    display = true;
+                }
+            }
+            if(display){
+                document.write("<a href='./chatrooms' id='{{name}}' onclick='saveChatName(this.id)'>");
+                document.write("<div class='row top-buffer'>");
+                document.write("<div class='col-4'>");
+                document.write("<img src='{{imageURL}}' class='img-fluid'>");
+                document.write("<img src='{{onlineStatus}}' class='statusBubble'>");
+                document.write("</div>");
+                document.write("<div class='col-8'>");
+                document.write("<h3 class='text-light'>{{name}}</h3>");
+                document.write("<p style='color:#626262'>{{chat}}</p>");
+                document.write("</div>");
+                document.write("</div>");
+                document.write("</a>");
+                document.write("<hr>");
+            }
+            /*
         <a href="./chatrooms">
         <div class="row top-buffer">         
             <div class="col-4">
@@ -47,8 +71,9 @@
         </div>
         </a>
         <hr>
+        */
         {{/each}}
-
+        </script>
     </div>
     
     <nav class="navbar fixed-bottom" style="background-color:#16141A">
@@ -72,7 +97,13 @@
         </div>
     </nav>
     
-    
+    <script>
+        function saveChatName(inputId) {
+            var cName = inputId;
+            console.log(cName);
+            localStorage.setItem('chatName', JSON.stringify(cName));
+        }
+    </script>
     
     <script src="js/jquery-1.11.0.js"></script>	
     <!--<script src="js/bootstrap.min.js"></script>-->

@@ -1,0 +1,168 @@
+<!doctype html>
+
+<html>
+
+<head>
+	<title>Gamer</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/custom-theme.css">   
+</head>
+
+<body>
+     
+    
+    <!--
+    <div class="navbar-collapse collapse" id="headerText">
+		<span class="navbar-brand">
+		</span>
+	</div>
+    -->
+
+	
+    <nav class="navbar navbar-static-top" style="background-color:#16141A">
+        <a class="mr-auto" style="color:#FF007A" href="./home">&#x293A;</a>
+    </nav>
+     
+    <div class="container">
+    
+       
+        <h3 class="text-center top-buffer" style="color:#FF007A">PARTY UP!</h3>
+        <h4 class="text-center text-light">We found some teammates based on your preferences!</h4>
+        
+        <!--
+        {{#each suggestions}}
+
+        <div class="row top-buffer">         
+            <div class="col-4">
+                <img src="{{imageURL}}" alt="{{name}}" class="img-fluid">
+            </div>
+            <div class="col-8">
+                <h3 class="text-light">{{name}}<button class="add" onclick="">+
+                Add</button></h3> 
+                <p class="text-light">{{genres}}</p> 
+            </div>
+        </div>
+        <hr>
+
+        {{/each}}
+        -->
+    <script>
+        var matches;
+        {{#each suggestions}}
+            var gens = "{{genres}}";
+            var gensArr = gens.split(",");
+            var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+            var mutual = [];
+            var len = gensArr.length;
+            var suggest = false;
+            var mutualIndex = 0;
+            for(var i = 0; i < len; i++){
+                for(var x = 0; x < usrGens.length; x++){
+                    if(gensArr[i].localeCompare(usrGens[x]) == 0){
+                        suggest = true;
+                        mutual[mutualIndex] = " " + gensArr[i];
+                        mutualIndex++;
+                    }
+                }
+            }
+            console.log(mutual);
+
+            if(suggest){
+                document.write("<div class='row top-buffer'>");
+                document.write("<div class='col-4'>");
+                document.write("<img src='{{imageURL}}'");
+                document.write("alt='{{name}}'");
+                document.write("class='img-fluid'>");
+                document.write("</div>");
+                document.write("<div class='col-8'>");
+                document.write("<h3 class='text-light'>");
+                document.write("{{name}}");
+                document.write("<button class='add'");
+                document.write("id='{{name}}'");
+                document.write("onclick='addF(event)' background-color='#221F27'>");
+                document.write("+ Add</button></h3>"); 
+                document.write("<p class='text-light'>");
+                document.write(mutual + "</p>"); 
+                document.write("</div>");
+                document.write("</div>");
+                document.write("<hr>");
+            }
+
+        {{/each}}
+            //console.log("test");
+    </script>
+    </div>
+    
+    <nav class="navbar fixed-bottom" id="nextMenu"
+    style="background-color:#16141A">
+        <a class="float-right ml-auto" style="color:#FF007A"
+        onclick="saveFriends(event)" href="./friends">FINISH</a>
+    </nav>
+    
+    
+    <script>
+        var friends = ["0"];
+        var fSize = 0;
+        function addF(e) {
+            if(friends.includes(e.srcElement.id)){
+                var ind = friends.indexOf(e.srcElement.id);
+                friends[ind] = "0";
+                
+                //$(this).text('+ Add');
+                document.getElementById(e.srcElement.id).innerText = '+ Add';
+                document.getElementById(e.srcElement.id).className="add";
+                //document.getElementById(e.srcElement.id).style.backgroundColor =
+                //"#FFFFFF";
+                //document.getElementById(e.srcElement.id).style.boxShadow = 
+                //"7px 7px 8px rgba(0, 0, 0, 0.25)";
+                //document.getElementById("next-menu").style.visibility = "hidden";       
+                fSize--;
+                //if(fSize == 0){
+                //    $('#nextMenu').fadeOut(500);
+                //}
+            }
+            else {
+                if(friends.includes("0")){
+                    var ind = friends.indexOf("0");
+                    friends[ind] = e.srcElement.id;
+                }
+                else{
+                    friends.push(e.srcElement.id);
+                }
+                //$(this).text('Added');
+                document.getElementById(e.srcElement.id).innerText = "&#x2713; Added";
+                //document.getElementById(e.srcElement.id).className = "added";
+                document.getElementById(e.srcElement.id).style.backgroundColor = "#FF007A";
+                document.getElementById(e.srcElement.id).style.boxShadow =
+                "7px 7px 8px rgba(0, 0, 0, 0.25) inset";
+                fSize++;
+                //$('#nextMenu').fadeIn(500);
+            }
+
+        }
+    </script>
+    
+    <script>
+        function saveFriends(e) {
+            localStorage.setItem('usrFriends', JSON.stringify(friends));
+        }
+    </script>
+
+    <script>
+        var gens = localStorage.getItem('usrGenres');
+        console.log(gens);
+    </script>
+    
+    <script src="js/jquery-1.11.0.js"></script>	
+    <!--<script src="js/bootstrap.min.js"></script>-->
+	<script src="js/bootstrap.js"></script>
+
+
+
+</body>
+
+</html>
