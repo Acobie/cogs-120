@@ -24,67 +24,52 @@
 
 	
     <nav class="navbar sticky-top" style="background-color:#16141A">
-        <h3 class="mx-auto" style="color:#FF007A">CHAT</h3>
+        <a href="javascript:history.back()" style="font-size: 26px; color:white;">&#x293A;</a>
+        <h3 class="mx-auto" style="color:white">Choose a Friend</h3>
     </nav>
      
     <div class="container">
-    
-    <div class="text-center top-buffer">
-        <a href="./newchat">
-        <div class="col">
-        <img src="https://i.imgur.com/aGU2RLQ.png" class="navItem">
-        </div>
-        <div class="col">
-        <h3>Create a New Chat</h3>
-        </div>
-        </a>
-    </div>
-        
-        <script>
-        
-            {{#each suggestions}}
+
+    <script>
+        var matches;
+        {{#each suggestions}}
             var name = "{{name}}";
             var fArray = JSON.parse(localStorage.getItem('usrFriends')); 
+
             var display = false;
+
             for(var i = 0; i < fArray.length; i++){
                 if(fArray[i].localeCompare(name) == 0){
                     display = true;
                 }
             }
+
             if(display){
-                document.write("<a href='./chatrooms' id='{{name}}' onclick='saveChatName(this.id)'>");
                 document.write("<div class='row top-buffer'>");
                 document.write("<div class='col-4'>");
-                document.write("<img src='{{imageURL}}' class='img-fluid'>");
-                document.write("<img src='{{onlineStatus}}' class='statusBubble'>");
+                document.write("<img src='{{imageURL}}'");
+                document.write("alt='{{name}}'");
+                document.write("class='img-fluid'>");
                 document.write("</div>");
                 document.write("<div class='col-8'>");
-                document.write("<h3 class='text-light'>{{name}}</h3>");
-                document.write("<p style='color:#626262'>{{chat}}</p>");
+                document.write("<h3 class='text-light'>");
+                document.write("{{name}}");
+                document.write("<a href='./chatrooms' id='{{name}}' onclick='saveName(this.id)'>");
+                document.write("<img src='https://i.imgur.com/DGuauBF.png'");
+                document.write("class='float-right chatIcon'>");
+                document.write("</a></h3>");
+                document.write("<p class='text-light'>");
+                document.write("{{genres}}</p>"); 
                 document.write("</div>");
                 document.write("</div>");
-                document.write("</a>");
                 document.write("<hr>");
             }
-            /*
-        <a href="./chatrooms">
-        <div class="row top-buffer">         
-            <div class="col-4">
-                <img src="{{imageURL}}" alt="{{name}}" class="img-fluid">
-                <img
-                src="{{onlineStatus}}"
-                class="statusBubble">
-            </div>
-            <div class="col-8">
-                <h3 class="text-light">{{name}}</h3> 
-                <p style="color:#626262">{{chat}}</p> 
-            </div>
-        </div>
-        </a>
-        <hr>
-        */
+
         {{/each}}
-        </script>
+            //console.log("test");
+    </script>
+        
+
     </div>
     
     <nav class="navbar fixed-bottom" style="background-color:#16141A">
@@ -107,14 +92,15 @@
                 </a>
         </div>
     </nav>
-    
+   
     <script>
-        function saveChatName(inputId) {
+        function saveName(inputId) {
             var cName = inputId;
             console.log(cName);
             localStorage.setItem('chatName', JSON.stringify(cName));
         }
     </script>
+    
     
     <script src="js/jquery-1.11.0.js"></script>	
     <!--<script src="js/bootstrap.min.js"></script>-->

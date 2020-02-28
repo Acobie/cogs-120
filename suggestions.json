@@ -2,7 +2,8 @@
     "suggestions": [
         {
             "name": "A. Dude",
-            "genres": [ "Action", "Adventure", "Casual", "Puzzle", "Racing", "RPG", "Sports", "Strategy" ],
+            "genres": [ "Action", "Adventure", "Strategy" ],
+            "testgenres": [ "Action", "Adventure", "Casual", "Puzzle", "Racing", "RPG", "Sports", "Strategy" ],
             "imageURL": "https://i.imgur.com/eClV1JZ.png"
         },
         {
