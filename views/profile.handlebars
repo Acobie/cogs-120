@@ -63,8 +63,8 @@
         </script>
     </ol>    
 
-    <p class="styledText" style="text-decoration:underline;">
-        <a style="color:#E90000;" href="./">LOG OUT</a>
+    <p class="styledText bottom-buffer" style="text-decoration:underline;">
+        <a style="color:#E90000;" href="./" onclick="allClear(event)">LOG OUT</a>
     </p>
     
     </div>
@@ -90,7 +90,11 @@
         </div>
     </nav>
 
-    
+    <script>
+        function allClear(e) {
+            localStorage.clear();
+        }
+    </script>
 
     <script src="js/jquery-1.11.0.js"></script>	
     <!--<script src="js/bootstrap.min.js"></script>-->
