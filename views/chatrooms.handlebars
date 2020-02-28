@@ -22,25 +22,30 @@
 	</div>
     -->
 
-	<div style="background-color:#16141A"><a href="javascript:history.back()" onclick="saveNewMsgs(event)" style="font-size: 26px; color:white;">&#x293A;</a></div>
+    <!--
+	<div style="background-color:#16141A"></div>
+    -->
     <nav class="navbar sticky-top" style="background-color:#16141A">
-        <div class="mx-auto text-center">
-            <img src="https://i.imgur.com/eClV1JZ.png" class="img-fluid
-            chatroomPic">
-            <h4 class="text-light text-center">
-            <script>
-                var cName = localStorage.getItem('chatName');
-                document.write(JSON.parse(cName));
-            </script>
-            </h4>
-            <h6 class="text-light text-center">
-                <img
-                src="https://miro.medium.com/max/512/1*nZ9VwHTLxAfNCuCjYAkajg.png"
-                class="onlineStatus">
-                ONLINE
-            </h6>
-        </div>
-        
+            <div class="mr-auto">
+                <a href="javascript:history.back()" onclick="saveNewMsgs(event)" style="font-size: 35px; color:white;">&#x293A;</a>
+            </div>
+            <div class="mx-auto">
+                <img src="https://i.imgur.com/eClV1JZ.png" class="img-fluid chatroomPic">
+                <h4 class="text-light text-center">
+                <script>
+                    var cName = localStorage.getItem('chatName');
+                    document.write(JSON.parse(cName));
+                </script>
+                </h4>
+            
+                <h6 class="text-light text-center">
+                    <img src="https://miro.medium.com/max/512/1*nZ9VwHTLxAfNCuCjYAkajg.png"
+                    class="onlineStatus">
+                    ONLINE
+                </h6>
+            </div>
+            <div class="ml-auto"></div>
+    
     </nav>
      
     <div class="container" style="height: 60vh;">

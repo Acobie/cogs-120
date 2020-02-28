@@ -25,14 +25,14 @@
     <img style="max-width: 245px; margin-top: 2.5vh;" alt="Profile pic" src="https://i.imgur.com/eClV1JZ.png">        
     <script>
         var usr = JSON.parse(localStorage.getItem('usrName'));
-        if(usr == null){
+        if(usr == null || usr.localeCompare("") == 0){
             document.write("<h2>User Name</h2>");
         }
         else {
             document.write("<h2>"+usr+"</h2>");
         }
     </script>
-    <p class="styledText" style="color: #0084E4; letter-spacing: 0.07em; margin-top: 3.8vh;"><a href="./editprofile">Edit profile</a></p>
+    <p class="styledText" style="color: #0084E4; letter-spacing: 0.07em; margin-top: 3.8vh; text-decoration:underline;"><a href="./editprofile">Edit profile</a></p>
     <hr class="divider">
     <!-- games -->
     <!-- NOT IMPLEMENTED CURRENTLY
@@ -57,8 +57,11 @@
         <script>
             var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
 
+            var emptyGen = "0";
             for(var x = 0; x < usrGens.length; x++){
-                document.write("<li>"+usrGens[x]+"</li>");
+                if(usrGens[x].localeCompare(emptyGen) != 0 ) {
+                    document.write("<li>"+usrGens[x]+"</li>");
+                }
             }
         </script>
     </ol>    
