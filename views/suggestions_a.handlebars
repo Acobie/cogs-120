@@ -120,6 +120,7 @@ ga('send', 'pageview');
         var friends = ["0"];
         var fSize = 0;
         function addF(e) {
+            ga('create', 'UA-159610861-1', 'auto');
             if(friends.includes(e.srcElement.id)){
                 var ind = friends.indexOf(e.srcElement.id);
                 friends[ind] = "0";
@@ -135,6 +136,7 @@ ga('send', 'pageview');
                 //if(fSize == 0){
                 //    $('#nextMenu').fadeOut(500);
                 //}
+                ga('send', 'event', 'undoAdd', 'click');
             }
             else {
                 if(friends.includes("0")){
@@ -151,6 +153,7 @@ ga('send', 'pageview');
                 //"7px 7px 8px rgba(0, 0, 0, 0.25) inset";
                 fSize++;
                 //$('#nextMenu').fadeIn(500);
+                ga('send', 'event', 'add', 'click');
             }
 
         }
