@@ -138,6 +138,7 @@ ga('send', 'pageview');
                 //if(fSize == 0){
                 //    $('#nextMenu').fadeOut(500);
                 //}
+                ga('send', 'event', 'undoAdd', 'click');
             }
             else {
                 if(friends.includes("0")){
@@ -156,6 +157,7 @@ ga('send', 'pageview');
                 //"7px 7px 8px rgba(0, 0, 0, 0.25) inset";
                 fSize++;
                 //$('#nextMenu').fadeIn(500);
+                ga('send', 'event', 'add', 'click');
             }
 
         }
