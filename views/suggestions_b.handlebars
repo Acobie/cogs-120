@@ -9,7 +9,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/custom-theme.css">   
+    <link rel="stylesheet" href="css/custom-theme.css">  
+    <link rel="stylesheet" href="css/popupbox.css">
+
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -24,7 +26,19 @@ ga('send', 'pageview');
 
 <body>
      
-    
+    <dialog id="overlay" onclick="closeDialog()"></dialog>
+    <dialog id="addDialog">
+        <button onclick="closeDialog()" style="float: right;">x</button>
+        <br>
+        <img src='https://i.imgur.com/eClV1JZ.png' alt='{{name}}' class='img-fluid popup'>
+        <h4 class="text-light" id="addDialogName"></h3>
+        <hr style="border-top: 1px solid gray">
+        <h5 class="text-light">TOP GENRES:</h4>
+        <ul class="text-light text-left" id="listGens">
+        </ul>
+        <p style="color:#606060">*Mutual Genres</p>
+    </dialog>
+
     <!--
     <div class="navbar-collapse collapse" id="headerText">
 		<span class="navbar-brand">
@@ -37,29 +51,63 @@ ga('send', 'pageview');
         <a class="mr-auto" style="font-size: 35px; color:#FF007A" href="./home">&#x293A;</a>
     </nav>
      
+    <script>
+        function openDialog(e) {
+            
+            document.getElementById("overlay").show();
+            document.getElementById("addDialog").show();
+            $('body').css('overflow', 'hidden');
+            var details = e.srcElement.id.split("+");
+            var addDName = details[0];
+            console.log(addDName);
+            $('#addDialogName').html(addDName);
+            
+            var addDGens = details[1].split(",");
+            for(var p = 0; p < addDGens.length; p++){
+                var matchGen = false;
+                for(var t = 0; t < usrGens.length; t++){
+                    if(usrGens[t].localeCompare(addDGens[p]) == 0){
+                        matchGen = true;
+                    }
+                }
+                if(matchGen){
+                    $('#listGens').append("<li>"+addDGens[p]+"*</li>");
+                } else {
+                    $('#listGens').append("<li>"+addDGens[p]+"</li>");
+                }
+            }
+
+            /*
+            {{#each suggestions}}
+                var currName = "{{name}}";
+                if(currName.localeCompare("addDName") == 0){
+                    var gens1 = "{{genres}}";
+                    var gensArr1 = gens1.split(",");
+                    console.log(gensArr1):
+                    for(var p = 0; p < gensArr1.length; p++){
+                        $('#listGens').append("<li>gensArr1[p]</li>");
+                    }
+                }else{
+
+                }
+            {{/each}}
+            */
+        }
+
+        function closeDialog() {
+            document.getElementById("overlay").close();
+            document.getElementById("addDialog").close();
+            $('body').css('overflow', 'auto');
+            $('#listGens').empty();
+        }
+    </script>
+
     <div class="container">
     
        
         <h3 class="text-center top-buffer" style="color:#FF007A">PARTY UP!</h3>
         <h4 class="text-center text-light">We found some teammates based on your preferences!</h4>
         
-        <!--
-        {{#each suggestions}}
-
-        <div class="row top-buffer">         
-            <div class="col-4">
-                <img src="{{imageURL}}" alt="{{name}}" class="img-fluid">
-            </div>
-            <div class="col-8">
-                <h3 class="text-light">{{name}}<button class="add" onclick="">+
-                Add</button></h3> 
-                <p class="text-light">{{genres}}</p> 
-            </div>
-        </div>
-        <hr>
-
-        {{/each}}
-        -->
     <script>
         var matches;
         {{#each suggestions}}
@@ -84,13 +132,13 @@ ga('send', 'pageview');
             if(suggest){
                 document.write("<div class='row top-buffer'>");
                 document.write("<div class='col-4'>");
-                document.write("<img src='{{imageURL}}'");
+                document.write("<img src='{{imageURL}}' id='{{name}}+{{genres}}+2' onclick='openDialog(event)'");
                 document.write("alt='{{name}}'");
                 document.write("class='img-fluid'>");
                 document.write("</div>");
                 document.write("<div class='col-8'>");
                 document.write("<h3 class='text-light'>");
-                document.write("{{name}}");
+                document.write("<span onclick='openDialog(event)' id='{{name}}+{{genres}}+1'>{{name}}</span>");
                 document.write("<img src='https://i.imgur.com/taTJR2X.png' id='{{name}}' class='addButton' onclick='addF(event)'>");
                 document.write("</h3>"); 
                 /*
