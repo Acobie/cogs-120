@@ -50,7 +50,8 @@ ga('send', 'pageview');
     <nav class="navbar navbar-static-top" style="background-color:#16141A">
         <a class="mr-auto" style="font-size: 35px; color:#FF007A" href="./home">&#x293A;</a>
     </nav>
-     
+    
+    <!--
     <script>
         function openDialog(e) {
             
@@ -101,7 +102,7 @@ ga('send', 'pageview');
             $('#listGens').empty();
         }
     </script>
-
+    -->
     <div class="container">
     
        
@@ -132,13 +133,15 @@ ga('send', 'pageview');
             if(suggest){
                 document.write("<div class='row top-buffer'>");
                 document.write("<div class='col-4'>");
-                document.write("<img src='{{imageURL}}' id='{{name}}+{{genres}}+2' onclick='openDialog(event)'");
+                document.write("<img src='{{imageURL}}' id='{{name}}+{{genres}}+2'");
+                //onclick='openDialog(event)'");
                 document.write("alt='{{name}}'");
                 document.write("class='img-fluid'>");
                 document.write("</div>");
                 document.write("<div class='col-8'>");
                 document.write("<h3 class='text-light'>");
-                document.write("<span onclick='openDialog(event)' id='{{name}}+{{genres}}+1'>{{name}}</span>");
+                //document.write("<span onclick='openDialog(event)' id='{{name}}+{{genres}}+1'>{{name}}</span>");
+                document.write("<span id='{{name}}+{{genres}}+1'>{{name}}</span>");
                 document.write("<img src='https://i.imgur.com/taTJR2X.png' id='{{name}}' class='addButton' onclick='addF(event)'>");
                 document.write("</h3>"); 
                 /*
