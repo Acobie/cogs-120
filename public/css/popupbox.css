@@ -7,6 +7,8 @@
     height: 100%;
     width: 100%;
     z-index: 2;
+    visibility: hidden;
+    text-align: center;
 }
 
 .popup {
@@ -17,16 +19,19 @@
 #addDialog {
     z-index: 3;
     position: fixed;
-    margin-left: auto;
-    margin-right: auto;
-    top: 26%;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     border-width: 1px;
     border-radius: 25px;
     background: #202020;
     padding: 20px;
     width: 360px;
     height: auto;
-    max-height: 550px;
+    max-height: 525px;
     text-align: center;
+    visibility: hidden;
 }
 
