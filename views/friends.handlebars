@@ -9,12 +9,67 @@
 	
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.css">
-    <link rel="stylesheet" href="css/custom-theme.css">   
+    <link rel="stylesheet" href="css/custom-theme.css">  
+    <link rel="stylesheet" href="css/popupbox.css">
+    <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"> </script>
 </head>
 
 <body>
-     
+    <div id="overlay" onclick="closeDialog()">
+    </div>
+    <div id="addDialog" class="mx-auto">
+        <button onclick="closeDialog()" style="float: right; border:0px; background-color: #202020;" class="text-light"><h5>x</h5></button>
+        <br>
+        <img src='https://i.imgur.com/eClV1JZ.png' alt='{{name}}' class='img-fluid popup'>
+        <h4 class="text-light" id="addDialogName"></h3>
+        <a href="./chatrooms" id="" onclick='saveName(this.id)'>
+            <h5><img src="https://i.imgur.com/DGuauBF.png" style="max-height: 18px"> <u>Create a New Chat</u></h5>
+        </a>
+        <hr style="border-top: 1px solid gray">
+        <h5 class="text-light">TOP GENRES:</h4>
+        <ul class="text-light text-left" id="listGens">
+        </ul>
+        <p style="color:#999999"><i>*Mutual Genres</i></p>
+    </div>
     
+    <script>
+        function openDialog(e) {
+            var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+            document.getElementById("overlay").style.visibility = "visible";
+            document.getElementById("addDialog").style.visibility = "visible";
+            $('body').css('overflow', 'hidden');
+
+            var details = e.srcElement.id.split("+");
+            var addDName = details[0];
+            console.log(addDName);
+            $('#addDialogName').html(addDName);
+            $('#addDialog a').attr('id', details[0]);
+            
+            var addDGens = details[1].split(",");
+            for(var p = 0; p < addDGens.length; p++){
+                var matchGen = false;
+                for(var t = 0; t < usrGens.length; t++){
+                    if(usrGens[t].localeCompare(addDGens[p]) == 0){
+                        matchGen = true;
+                    }
+                }
+                if(matchGen){
+                    $('#listGens').append("<li>"+addDGens[p]+"<span style='color: #999999;'>*</span></li>");
+                } else {
+                    $('#listGens').append("<li>"+addDGens[p]+"</li>");
+                }
+            }
+
+        }
+
+        function closeDialog() {
+            document.getElementById("overlay").style.visibility = "hidden";
+            document.getElementById("addDialog").style.visibility = "hidden";
+            $('body').css('overflow', 'auto');
+            $('#listGens').empty();
+        }
+    </script>
+
     <!--
     <div class="navbar-collapse collapse" id="headerText">
 		<span class="navbar-brand">
@@ -63,7 +118,7 @@
                 document.write("</div>");
                 document.write("<div class='col-8'>");
                 document.write("<h3 class='text-light'>");
-                document.write("{{name}}");
+                document.write("<span onclick='openDialog(event)' id='{{name}}+{{genres}}+1'>{{name}}</span>");
                 document.write("<a href='./chatrooms' id='{{name}}' onclick='saveName(this.id)'>");
                 document.write("<img src='https://i.imgur.com/DGuauBF.png'");
                 document.write("class='float-right chatIcon'>");
@@ -73,6 +128,7 @@
                 document.write("</div>");
                 document.write("</div>");
                 document.write("<hr>");
+
             }
 
         {{/each}}
