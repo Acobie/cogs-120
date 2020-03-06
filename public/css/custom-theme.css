@@ -10,6 +10,21 @@ body {
   visibility: hidden;  
 } 
 
+#headTitle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    font-family: Open sans;
+    font-size: 22px;
+    font-weight: 20;
+    text-align: center;
+    letter-spacing: 0.16em;
+
+    color: #FF007A;
+    text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
 #sendMsg {
     background-color: #FFFFFF;
     position: relative;
