@@ -29,7 +29,7 @@ usersRef.set({
 var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
-var suggestions = require('./routes/suggestions');
+//var suggestions = require('./routes/suggestions');
 var add = require('./routes/add');
 var friends = require('./routes/friends');
 var chats = require('./routes/chats');
@@ -67,7 +67,7 @@ if ('development' == app.get('env')) {
 app.get('/home', index.view);
 // Example route
 // app.get('/users', user.list);
-app.get('/suggestions', suggestions.view);
+app.get('/suggestions', suggB.view);
 app.get('/friends', friends.view);
 app.get('/chats', chats.view);
 app.get('/chatrooms', chatrooms.view);
@@ -76,7 +76,7 @@ app.get('/games', games.view);
 app.get('/add', add.view);
 app.get('/profile', profile.view);
 app.get('/editprofile', editprofile.view);
-app.get('/suggestions_b', suggB.view);
+//app.get('/suggestions_b', suggB.view);
 app.get('/suggestions_a', suggA.view);
 app.get('/newchat', newchat.view);
 
