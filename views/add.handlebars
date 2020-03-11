@@ -10,9 +10,25 @@
     <link rel="stylesheet" href="css/bootstrap.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/custom-theme.css">   
+    <link rel="stylesheet" href="css/popupbox.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body style="font-family: Open sans">
+    
+    <div id="overlay" onclick="closeDialog()">
+    </div>
+    <div id="addDialog" class="mx-auto">
+        <button onclick="closeDialog()" style="float: right; border:0px; background-color: #202020;" class="text-light"><h5>x</h5></button>
+        <br>
+        <img src='https://i.imgur.com/eClV1JZ.png' alt='{{name}}' class='img-fluid popup'>
+        <h4 class="text-light" id="addDialogName"></h3>
+        <hr style="border-top: 1px solid gray">
+        <h5 class="text-light">TOP GENRES:</h4>
+        <ul class="text-light text-left" id="listGens">
+        </ul>
+        <p style="color:#999999"><i>*Mutual Genres</i></p>
+    </div>
      
     
     <!--
@@ -26,11 +42,64 @@
     <nav class="navbar navbar-static-top" style="background-color:#16141A">
         <a href="javascript:history.back()" style="font-size: 35px; color:white;" onclick="saveNewFriends(event)">&#x293A;</a>
     </nav>
-     
+    
+    <script>
+        function openDialog(e) {
+            
+            document.getElementById("overlay").style.visibility = "visible";
+            document.getElementById("addDialog").style.visibility = "visible";
+            $('body').css('overflow', 'hidden');
+
+            var details = e.srcElement.id.split("+");
+            var addDName = details[0];
+            console.log(addDName);
+            $('#addDialogName').html(addDName);
+            
+            var addDGens = details[1].split(",");
+            for(var p = 0; p < addDGens.length; p++){
+                var matchGen = false;
+                for(var t = 0; t < usrGens.length; t++){
+                    if(usrGens[t].localeCompare(addDGens[p]) == 0){
+                        matchGen = true;
+                    }
+                }
+                if(matchGen){
+                    $('#listGens').append("<li>"+addDGens[p]+"<span style='color: #999999;'>*</span></li>");
+                } else {
+                    $('#listGens').append("<li>"+addDGens[p]+"</li>");
+                }
+            }
+
+            /*
+            {{#each suggestions}}
+                var currName = "{{name}}";
+                if(currName.localeCompare("addDName") == 0){
+                    var gens1 = "{{genres}}";
+                    var gensArr1 = gens1.split(",");
+                    console.log(gensArr1):
+                    for(var p = 0; p < gensArr1.length; p++){
+                        $('#listGens').append("<li>gensArr1[p]</li>");
+                    }
+                }else{
+
+                }
+            {{/each}}
+            */
+        }
+
+        function closeDialog() {
+            document.getElementById("overlay").style.visibility = "hidden";
+            document.getElementById("addDialog").style.visibility = "hidden";
+            $('body').css('overflow', 'auto');
+            $('#listGens').empty();
+        }
+    
+    </script>
+
     <div class="container">
     
        
-        <h3 class="text-center text-light top-buffer">Add some new friends!</h3>
+        <h3 class="text-center text-light top-buffer">Add New Friends</h3>
         
         <!--
         {{#each suggestions}}
@@ -55,12 +124,24 @@
             var gens = "{{genres}}";
             var gensArr = gens.split(",");
             var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+            var mutual = [];
+            var len = gensArr.length;
+            var suggest = false;
+            var mutualIndex = 0;
+            for(var i = 0; i < len; i++){
+                for(var x = 0; x < usrGens.length; x++){
+                    if(gensArr[i].localeCompare(usrGens[x]) == 0){
+                        suggest = true;
+                        mutual[mutualIndex] = " " + gensArr[i];
+                        mutualIndex++;
+                    }
+                }
+            }
+            
             var friendsArr = JSON.parse(localStorage.getItem('usrFriends'));
             var fName = "{{name}}"
 
-            var len = gensArr.length;
-            var suggest = false;
-
+            /*
             for(var i = 0; i < len; i++){
                 for(var x = 0; x < usrGens.length; x++){
                     if(gensArr[i].localeCompare(usrGens[x]) == 0){
@@ -68,6 +149,7 @@
                     }
                 }
             }
+            */
                         
             for(var z = 0; z < friendsArr.length; z++){
                  if(fName.localeCompare(friendsArr[z]) == 0){
@@ -78,13 +160,16 @@
             if(suggest){
                 document.write("<div class='row top-buffer'>");
                 document.write("<div class='col-4'>");
-                document.write("<img src='{{imageURL}}'");
+                document.write("<img src='{{imageURL}}' id='{{name}}+{{genres}}+2'");
+                //onclick='openDialog(event)'");
                 document.write("alt='{{name}}'");
                 document.write("class='img-fluid'>");
                 document.write("</div>");
                 document.write("<div class='col-8'>");
                 document.write("<h3 class='text-light'>");
-                document.write("{{name}}");
+                document.write("<span onclick='openDialog(event)' id='{{name}}+{{genres}}+1'>{{name}}</span>");
+                //document.write("<span onclick='openDialog(event)' id='{{name}}+{{genres}}+1'>{{name}}</span>");
+                //document.write("<span id='{{name}}+{{genres}}+1'>{{name}}</span>");
                 document.write("<img src='https://i.imgur.com/taTJR2X.png' id='{{name}}' class='addButton' onclick='addF(event)'>");
                 document.write("</h3>"); 
                 /*
@@ -93,11 +178,39 @@
                 document.write("onclick='addF(event)' background-color='#221F27'>");
                 document.write("+ Add</button></h3>"); 
                 */
+                document.write("<p class='text-light'>Mutual genres: <span style='color: #FF007A;'>");
+                document.write(mutual + "</span></p>"); 
+                document.write("</div>");
+                document.write("</div>");
+                document.write("<hr>");
+ 
+                 
+                /*
+                document.write("<div class='row top-buffer'>");
+                document.write("<div class='col-4'>");
+                document.write("<img src='{{imageURL}}'");
+                document.write("alt='{{name}}'");
+                document.write("class='img-fluid'>");
+                document.write("</div>");
+                document.write("<div class='col-8'>");
+                document.write("<h3 class='text-light'>");
+                document.write("{{name}}");
+                document.write("<img src='https://i.imgur.com/taTJR2X.png' id='{{name}}' class='addButton' onclick='addF(event)'>");
+                document.write("</h3>"); */
+                /*
+                document.write("<button class='add'");
+                document.write("id='{{name}}'");
+                document.write("onclick='addF(event)' background-color='#221F27'>");
+                document.write("+ Add</button></h3>"); 
+                */
+                /*
                 document.write("<p class='text-light'>");
                 document.write("{{genres}}</p>"); 
                 document.write("</div>");
                 document.write("</div>");
                 document.write("<hr>");
+                matches++;
+                */
                 matches++;
             }
 

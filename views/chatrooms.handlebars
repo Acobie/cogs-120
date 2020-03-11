@@ -62,7 +62,7 @@
                 var msgArr = JSON.parse(msgHistory);
                 for(var i = 0; i < msgArr.length; i++){
                 //$(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msgArr[i] + "</p></div>");
-                    document.write("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msgArr[i] + "</p></div>");
+                    document.write("<br style='clear:both' /><div class='text-light userMsg'><p class='text-left'>" + msgArr[i] + "</p></div>");
                 }
             }
             </script>
@@ -95,7 +95,7 @@
                 newMsgs.push(msg);
                 $("#sendMsg").val("");
                 //var html = "<div class='textMsg'><p class='text-right'>" + msg + "</p></div>";
-                $(".msgs").append("<br style='clear:both' /><div class='userMsg'><p class='text-left'>" + msg + "</p></div>");
+                $(".msgs").append("<br style='clear:both' /><div class='userMsg text-light'><p class='text-left'>" + msg + "</p></div>");
             }
         }
     </script>
@@ -125,13 +125,42 @@
     <script>
         function saveNewMsgs(e) {
             var getMsgs = localStorage.getItem(fName);
+            var activeChats = JSON.parse(localStorage.getItem('chatArray'));
+            var allChats = [""]
+            allChats.pop();
+            if(activeChats == null) {
+                console.log("over here");
+                console.log("over here");
+                console.log("test");
+                
+                allChats.push(fName);
+            } else if (activeChats.includes(fName)) {
+                allChats.push(fName);
+                for(var y = 0; y < activeChats.length; y++){
+                    console.log(activeChats[y]);
+                    if(activeChats[y].localeCompare(fName) != 0){
+                        allChats.push(activeChats[y]);
+                    }
+                }
+            } else {
+                allChats.push(fName);
+                for(var r = 0; r < activeChats.length; r++){
+                    allChats.push(activeChats[r]);
+                }
+            }
+            if(newMsgs.length != 0){
+                localStorage.setItem('chatArray', JSON.stringify(allChats));
+            }
+
             if( getMsgs == "" || getMsgs == null ) {
                 var jsonToSave = JSON.stringify(newMsgs); 
             } else {
                 var jsonMsg = JSON.parse(getMsgs);
                 var jsonToSave = JSON.stringify(jsonMsg.concat(newMsgs));
             }
-            localStorage.setItem(fName, jsonToSave);
+            if(jsonToSave.localeCompare("") != 0){
+                localStorage.setItem(fName, jsonToSave);
+            }
             /*
             var resetArr = [""];
             localStorage.setItem('A. Dude', resetArr);

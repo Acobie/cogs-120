@@ -106,8 +106,9 @@ body {
 .statusBubble {
     max-height: 25px;
     position: absolute;
-    right: 24%;
-    top: 66%
+    margin-top: 36%;
+    right: 20%;
+    
     
 }
 
