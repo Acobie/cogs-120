@@ -39,6 +39,18 @@ body {
     font-family: Open sans;
 }
 
+.questionMark {
+    margin-right: 20%;
+    max-width: 66%;
+    max-height: 36px;
+}
+
+.checkBox {
+    margin-left: 10%;
+    margin-right: 5%;
+    max-width: 10%;
+}
+
 .sendBar {
     position: fixed !important;
     bottom:100px;
@@ -87,7 +99,7 @@ body {
 
 .onlineStatus {
     width: 4.5vw;
-    max-width: 16px;
+    max-width: 40px;
 }
 
 .chatroomPic {

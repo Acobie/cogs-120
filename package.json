@@ -16,7 +16,8 @@
     "express3-handlebars": "*",
     "firebase-admin": "^8.9.2",
     "mongodb": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "popper.js": "^1.16.1"
   },
   "engines": {
     "node": "8.9.x"
