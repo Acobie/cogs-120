@@ -12,6 +12,7 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "@popperjs/core": "^2.1.0",
     "express": "3.x",
     "express3-handlebars": "*",
     "firebase-admin": "^8.9.2",
