@@ -59,12 +59,13 @@
             }
             
             var genSize = len;
-
-            for(var i = 0; i < len; i++){
+            var i = 0;
+            for(i = 0; i < len; i++){
                 var elemID = "game"+i;
                 console.log(elemID);
-                document.write("<li style='font-size: 14px;'>");
-                document.write("<select class='form-control' id=");
+                document.write("<li style='font-size: 14px;' id=\'game"+i+"1\'>");
+                document.write("<div class='d-flex'>");
+                document.write("<select class='form-control genOpt' id=");
                 document.write(elemID); 
                 document.write(" style='font-size: 14px;'>");
                 for(var x = 0; x < gens.length; x++){
@@ -75,10 +76,12 @@
                     }
                 }
                 document.write("</select>");
+                document.write("<img src='https://i.imgur.com/ILFgMCY.png' id=\'"+i+"\' alt style='align-self: center;' class='delButt' onclick='deleteRow(event)'>");
+                document.write("</div>");
                 document.write("</li>");
             }
         </script>
-    </ol>    
+    </ol>   
    
     <div style="text-align: center;">
         <a class="btn btn-default" onclick="addGenre(event)">ADD GENRE</a>
@@ -90,9 +93,19 @@
 
            } else {
                 var optID = "game" + genSize;
-                $(".genreList").append("<li style='font-size: 14px;'> <select class='form-control' id=" + optID + " style='font-size: 14px;'> <option>Action</option><option>Adventure</option><option>Casual</option><option>Puzzle</option><option>Racing</option><option>RPG</option><option>Sports</option><option>Strategy</option> </select></li>" );
+                $(".genreList").append("<li style='font-size: 14px;' id=\'game"+i+"1\'> <div class='d-flex'><select class='form-control genOpt' id=" + optID + " style='font-size: 14px;'> <option>Action</option><option>Adventure</option><option>Casual</option><option>Puzzle</option><option>Racing</option><option>RPG</option><option>Sports</option><option>Strategy</option> </select> <img src='https://i.imgur.com/ILFgMCY.png'  id=\'"+i+"\' alt style='align-self: center;' class='delButt' onclick='deleteRow(event)'> </div></li> " );
                 genSize++;
+                i++;
            }
+        }
+
+        function deleteRow(e) {
+            if(genSize >= 1) {
+                var idImg = "#game"+ e.srcElement.id+"1";                
+                console.log(idImg);
+                $(idImg).remove();
+                genSize--;
+            }
         }
     </script>
 
@@ -128,10 +141,16 @@
             }
             
             newGens.pop();
-
-            for(var z = 0; z < genSize; z++){
+            
+            var z = 0; var u = 0;
+            while(u < genSize){
+            //for(var z = 0; z < genSize; z++){
                 var elemID = "game" + z;
-                newGens.push(document.getElementById(elemID).value);
+                if(document.getElementById(elemID) != null){
+                    newGens.push(document.getElementById(elemID).value);
+                    u++;
+                }
+                z++;
             }
             
             console.log(newGens);    

@@ -56,6 +56,10 @@ body {
     bottom:100px;
 }
 
+.genOpt {
+    max-width: 69%; 
+}
+
 .textMsg {
     background: #E7E7E7;
     border: 1px solid #000000;
@@ -71,6 +75,10 @@ body {
     padding-bottom: 2px;
     max-width: 230px;
     border-radius: 12px;
+}
+
+.delButt {
+    max-width: 5%;
 }
 
 .addButton {

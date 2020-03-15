@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Welcome to BASH</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/login.css"> 
+    {{> facebook}}
+    <script src="/js/facebook.js"></script>
+</head>
+
+<body>
+     
+    <div class="container">
+        <img style="max-width: 35%;" src="https://scontent-lax3-2.xx.fbcdn.net/v/t1.15752-9/84546744_253264452328367_3730061345752612864_n.png?_nc_cat=106&_nc_ohc=6VYl1xXBBAIAX_FuF-Y&_nc_ht=scontent-lax3-2.xx&oh=ae19911b051456e1949c15c32b7297f0&oe=5EB50A0A">
+        <h1 class="text-center">BASH</h1> <br>
+        <div style="text-align: center;">
+            <input type="text" id="email" placeholder="User Name">
+            <br>
+            <input type="password" id="password" placeholder="Password">
+            <br>
+            <h2 id="name"></h2>
+            <a class="btn btn-default mr-auto" href="./home" id="login" onclick="saveName(event)">LOGIN</a>
+            <br><br>
+            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+            <br>
+            <!--
+            <a class="styledText" style="color: #A0A0A0;">Forgot password?</a>
+            <br>
+            
+            <div style="bottom: 0">
+                <p class="styledText" style="color: white;">Don't have an account yet?</p>
+                <a class="styledText" style="color: #0084E4;">Sign up</a>
+            </div>
+            -->
+
+
+        </div>
+
+        <!-- <div class="row top-buffer"> -->
+
+    </div>
+
+    <script>
+        function saveName(e) {
+            var usrName = $("#email").val();
+
+            localStorage.setItem('usrName', JSON.stringify(usrName));
+            
+        }
+    </script>
+    
+    <script src="js/jquery-1.11.0.js"></script>	
+    <!--<script src="js/bootstrap.min.js"></script>-->
+	<script src="js/bootstrap.js"></script>
+    
+
+</body>
+
+</html>
+
