@@ -63,7 +63,7 @@
             for(i = 0; i < len; i++){
                 var elemID = "game"+i;
                 console.log(elemID);
-                document.write("<li style='font-size: 14px;' id=\'game"+i+"1\'>");
+                document.write("<li class='text-light' style='font-size: 14px;' id=\'game"+i+"1\'>");
                 document.write("<div class='d-flex'>");
                 document.write("<select class='form-control genOpt' id=");
                 document.write(elemID); 
@@ -93,7 +93,7 @@
 
            } else {
                 var optID = "game" + genSize;
-                $(".genreList").append("<li style='font-size: 14px;' id=\'game"+i+"1\'> <div class='d-flex'><select class='form-control genOpt' id=" + optID + " style='font-size: 14px;'> <option>Action</option><option>Adventure</option><option>Casual</option><option>Puzzle</option><option>Racing</option><option>RPG</option><option>Sports</option><option>Strategy</option> </select> <img src='https://i.imgur.com/ILFgMCY.png'  id=\'"+i+"\' alt style='align-self: center;' class='delButt' onclick='deleteRow(event)'> </div></li> " );
+                $(".genreList").append("<li class='text-light' style='font-size: 14px;' id=\'game"+i+"1\'> <div class='d-flex'><select class='form-control genOpt' id=" + optID + " style='font-size: 14px;'> <option>Action</option><option>Adventure</option><option>Casual</option><option>Puzzle</option><option>Racing</option><option>RPG</option><option>Sports</option><option>Strategy</option> </select> <img src='https://i.imgur.com/ILFgMCY.png'  id=\'"+i+"\' alt style='align-self: center;' class='delButt' onclick='deleteRow(event)'> </div></li> " );
                 genSize++;
                 i++;
            }
