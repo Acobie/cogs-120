@@ -15,21 +15,29 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-static-top" style="background-color:#16141A">
+        <a class="mr-auto text-light" style="font-size: 35px;" href="./">&#x293A;</a>
+        <!-- if we want pink
+        <a class="mr-auto" style="font-size: 35px; color:#FF007A" href="./home">&#x293A;</a>
+        -->
+    </nav>
      
     <div class="container">
-        <img style="max-width: 35%;" src="https://scontent-lax3-2.xx.fbcdn.net/v/t1.15752-9/84546744_253264452328367_3730061345752612864_n.png?_nc_cat=106&_nc_ohc=6VYl1xXBBAIAX_FuF-Y&_nc_ht=scontent-lax3-2.xx&oh=ae19911b051456e1949c15c32b7297f0&oe=5EB50A0A">
-        <h1 class="text-center">BASH</h1> <br>
+        <br>
         <div style="text-align: center;">
-            <input type="text" id="email" placeholder="User Name">
+            <h2 class="text-left top-buffer" style="margin-left:7%">Register</h2>
+            <input type="text" id="fName" placeholder="First Name">
             <br>
-            <input type="password" id="password" placeholder="Password">
+            <input type="text" id="lName" placeholder="Last Name">
             <br>
-            <h2 id="name"></h2>
-            <a class="btn btn-default mr-auto" href="./home" id="login" onclick="saveName(event)">LOGIN</a>
-            <br><br>
-            <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+            <input type="text" id="usr" placeholder="User Name">
             <br>
+            <input type="password" id="create" placeholder="Create Password">
+            <br>
+            <input type="password" id="confirm" placeholder="Re-type Password">
+            <br>
+            <a class="btn btn-default mr-auto" href="./home" id="login"
+            onclick="saveName(event)">SIGN UP</a>
             <!--
             <a class="styledText" style="color: #A0A0A0;">Forgot password?</a>
             <br>
@@ -49,7 +57,7 @@
 
     <script>
         function saveName(e) {
-            var usrName = $("#email").val();
+            var usrName = $("#fName").val() + " " + $("#lName").val();
 
             localStorage.setItem('usrName', JSON.stringify(usrName));
             

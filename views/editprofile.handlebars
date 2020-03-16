@@ -28,7 +28,7 @@
         14px; line-height: 32px;">
         <script>
             var usr = JSON.parse(localStorage.getItem('usrName'));
-            if(usr == null || usr.localeCompare("") == 0){
+            if(usr == null || usr.localeCompare("") == 0 || usr.localeCompare(" ") == 0){
                 //document.write("<h2>User Name</h2>");
                 document.getElementById("usrname").placeholder = "User Name";
             }

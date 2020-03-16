@@ -31,7 +31,7 @@
     <img style="max-width: 245px; margin-top: 2.5vh;" alt="Profile pic" src="https://i.imgur.com/eClV1JZ.png">        
     <script>
         var usr = JSON.parse(localStorage.getItem('usrName'));
-        if(usr == null || usr.localeCompare("") == 0){
+        if(usr == null || usr.localeCompare("") == 0 || usr.localeCompare(" ") == 0){
             document.write("<h2>User Name</h2>");
         }
         else {

@@ -31,6 +31,7 @@ var index = require('./routes/index');
 // var user = require('./routes/user');
 //var suggestions = require('./routes/suggestions');
 var add = require('./routes/add');
+var register = require('./routes/register');
 var friends = require('./routes/friends');
 var chats = require('./routes/chats');
 var chatrooms = require('./routes/chatrooms');
@@ -79,6 +80,7 @@ app.get('/editprofile', editprofile.view);
 //app.get('/suggestions_b', suggB.view);
 app.get('/suggestions_a', suggA.view);
 app.get('/newchat', newchat.view);
+app.get('/register', register.view);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

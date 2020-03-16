@@ -34,6 +34,24 @@
     <script>
         var matches;
         {{#each suggestions}}
+            var gens = "{{genres}}";
+            var gensArr = gens.split(",");
+            var usrGens = JSON.parse(localStorage.getItem('usrGenres'));
+            var mutual = [];
+            var len = gensArr.length;
+            
+            var mutualIndex = 0;
+            for(var i = 0; i < len; i++){
+                for(var x = 0; x < usrGens.length; x++){
+                    if(gensArr[i].localeCompare(usrGens[x]) == 0){
+                        suggest = true;
+                        mutual[mutualIndex] = " " + gensArr[i];
+                        mutualIndex++;
+                    }
+                }
+            }
+            
+            
             var name = "{{name}}";
             var fArray = JSON.parse(localStorage.getItem('usrFriends')); 
 
@@ -59,8 +77,12 @@
                 document.write("<img src='https://i.imgur.com/DGuauBF.png'");
                 document.write("class='float-right chatIcon'>");
                 document.write("</a></h3>");
+                document.write("<p class='text-light'>Mutual genres: <span style='color: #FF007A;'>");
+                document.write(mutual + "</span></p>"); 
+                /*
                 document.write("<p class='text-light'>");
                 document.write("{{genres}}</p>"); 
+                */
                 document.write("</div>");
                 document.write("</div>");
                 document.write("<hr>");
